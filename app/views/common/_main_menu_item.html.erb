@@ -1,8 +1,8 @@
 <% content_tag_for(:li,item) do %>
 	<% if page %>
-		<%= link_to item.short_name, [section,item] %>
+		<%= link_to item.short_name, [section,item], :class => ( item == @page ? "current" : "notcurrent" ) %>
 	<% else %>
-		<%= link_to item.short_name, item %>
+		<%= link_to item.short_name, item, :class => ( item == @section ? "current" : "notcurrent" ) %>
 		<% unless item.children.blank? and item.pages.blank? %>
 			<% content_tag(:ul, :class => "level-#{item.ancestors.size}") do %>
 				<%= render :partial => "common/main_menu_item", :collection => item.pages, :as => :item, :locals => { :page => true, :section => item } %>

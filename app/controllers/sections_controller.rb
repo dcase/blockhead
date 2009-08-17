@@ -65,9 +65,11 @@ class SectionsController < ApplicationController
       if @section.save
         flash[:notice] = 'Section was successfully created.'
         format.html { redirect_to(@section) }
+        format.js { render :partial => "common/main_menu" }
         format.xml  { render :xml => @section, :status => :created, :location => @section }
       else
         format.html { render :action => "new" }
+        format.js { render :action => "new" }
         format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
       end
     end
@@ -82,9 +84,11 @@ class SectionsController < ApplicationController
       if @section.update_attributes(params[:section])
         flash[:notice] = 'Section was successfully updated.'
         format.html { redirect_to(@section) }
+        format.js { render :partial => "common/main_menu" }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
+        format.js { render :action => "edit" }
         format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
       end
     end
@@ -97,7 +101,7 @@ class SectionsController < ApplicationController
     @section.destroy
 
     respond_to do |format|
-      format.html { redirect_to(sections_url) }
+      format.html { redirect_to(root_url) }
       format.xml  { head :ok }
     end
   end

@@ -1,1 +1,9 @@
-<%= link_to "Add a page to this section", new_section_page_path(@section), :class => "modal" %>
+Coming soon!
+
+<% content_for :admin_toolbar do %>
+	<li><strong>Section:</strong></li>
+	<li><%= image_tag 'add.png', :size => "16x16" %><%= link_to "Add Section", new_section_path, :class => "modal update_navigation" %></li>
+	<li><%= image_tag("pencil.png", :size => "16x16", :alt => "Edit") %><%= link_to "Edit Section", edit_section_path(@section), :class => "modal", :title => "Edit" %></li>
+	<li><%= image_tag("fail.png", :size => "16x16", :alt => "Delete") %><%= link_to "Delete Section", @section, :confirm => "Are you sure?", :method => "delete", :title => "Delete" %></li>
+	<li><%= image_tag 'add.png', :size => "16x16" %><%= link_to "Add Page", new_section_page_path(@section), :class => "modal update_navigation" %></li>
+<% end %>

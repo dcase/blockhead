@@ -34,9 +34,9 @@
 	<div id="header" class="clearfix">
 		<%= render :partial => "common/font_size_switcher" %>
 	</div><!-- end 'header' -->
-	<div id="navigation">
-		<%= render :partial => "common/main_menu" %>
-	</div><!-- end 'navigation' -->
+
+	<%= render :partial => "common/main_menu" %>
+
 	<div id="content" class="page">
 		<%= render :partial => "common/flash", :locals => { :flash => flash } %>
 		<%= yield :page_heading %>

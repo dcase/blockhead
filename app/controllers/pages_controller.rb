@@ -52,9 +52,11 @@ class PagesController < ApplicationController
       if @page.save
         flash[:notice] = 'Page was successfully created.'
         format.html { redirect_to([@section,@page]) }
+        format.js { render :partial => "common/main_menu" }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         format.html { render :action => "new" }
+        format.js { render :action => "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
@@ -70,9 +72,11 @@ class PagesController < ApplicationController
       if @page.update_attributes(params[:page])
         flash[:notice] = 'Page was successfully updated.'
         format.html { redirect_to([@section,@page]) }
+        format.js { render :partial => "common/main_menu" }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
+        format.js { render :action => "edit" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end

@@ -1,6 +1,6 @@
 <h1>Editing page</h1>
 
-<% form_for([@section,@page]) do |f| %>
+<% form_for([@section,@page], :html => { :class => "ajax" }) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => f %>

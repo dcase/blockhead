@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :get_published_sections_for_main_menu
+  # before_filter :get_published_sections_for_main_menu
   after_filter :discard_flash_on_ajax
   
   # AuthLogic
