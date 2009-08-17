@@ -41,6 +41,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def permission
+    unless authorized?
+      flash[:notice] = "You don't look like an admin to me"
+      session[:back_url] = request.referer || root_path
+      redirect_to session[:back_url]
+    end
+  end
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

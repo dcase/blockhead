@@ -1,5 +1,6 @@
 <div id="admin-toolbar-container">
 	<h3>admin toolbar</h3>
+	
 	<ul id="page-admin-menu">
 		<li>
 			<%= image_tag("fail.png", :size => "16x16") %>
@@ -7,5 +8,8 @@
 		</li>
 		<%= yield :admin_toolbar %>
 	</ul>
+	
+	<%= render :partial => "users/user" %>
+	
 	<%= image_tag 'drag_handle.png', :size => "16x16", :class => "admin_drag_handle" %>
 </div>

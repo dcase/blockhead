@@ -46,7 +46,7 @@
 <div id="footer">
 </div><!-- end 'footer' -->
 <h2 id="seo-heading2"><%= (heading = yield(:seo_heading2)) ? heading : "SEO heading" %></h2>
-<% if authorized?(:admin) %>
+<% if authorized? %>
 	<%= render :partial => 'common/admin_toolbar' %>
 <% end %>
 </body>

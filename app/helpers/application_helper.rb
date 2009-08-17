@@ -9,6 +9,10 @@ module ApplicationHelper
   end
   
   def get_menu_sections
-    Section.all(:order => :position, :conditions => { :published => true, :parent_id => nil })
+    unless authorized?
+      Section.all(:order => :position, :conditions => { :published => true, :parent_id => nil })
+    else
+      Section.all(:order => :position, :conditions => { :parent_id => nil })
+    end
   end
 end

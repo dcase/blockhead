@@ -1,0 +1,7 @@
+<div id="user">
+		<strong>logged-in as:</strong><br />
+		<%= current_user.login %>
+		<%= link_to image_tag('pencil.png', :size => '16x16'), edit_user_path(current_user), :title => "Edit Profile", :class => "modal update_user" %><br />
+		<strong>role:</strong><br />
+		<%= current_user.role %>
+</div>
