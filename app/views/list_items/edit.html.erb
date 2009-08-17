@@ -1,0 +1,9 @@
+<% form_for([@list,@list_item], :html => { :class => "edit_in_place_form" }) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => f %>
+
+  <%= f.submit 'Update' %>
+	<%= link_to 'cancel', root_path, :class => "cancel_edit_in_place" %>
+<% end %>
+  

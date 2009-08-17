@@ -1,0 +1,28 @@
+<h1>Listing blocks</h1>
+
+<table>
+  <tr>
+    <th>Short name</th>
+    <th>Long name</th>
+    <th>Parent</th>
+    <th>Position</th>
+    <th>Css classes</th>
+  </tr>
+
+<% @blocks.each do |block| %>
+  <tr>
+    <td><%=h block.short_name %></td>
+    <td><%=h block.long_name %></td>
+    <td><%=h block.parent_id %></td>
+    <td><%=h block.position %></td>
+    <td><%=h block.css_classes %></td>
+    <td><%= link_to 'Show', block %></td>
+    <td><%= link_to 'Edit', edit_block_path(block) %></td>
+    <td><%= link_to 'Destroy', block, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New block', new_block_path %>

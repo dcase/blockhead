@@ -1,0 +1,30 @@
+<p>
+  <%= form.label :title %><br />
+  <%= form.text_field :title %>
+</p>
+<p>
+  <%= form.label :caption, "Caption (also used as alt text):" %><br />
+  <%= form.text_field :caption %>
+</p>
+<p>
+  <%= form.label :description %><br />
+  <%= form.text_area :description, :rows => 3 %>
+</p>
+<p>
+  <%= form.label :link_url, "Link to URL?:" %><br />
+  <%= form.text_field :link_url %>
+</p>
+<% if @image_file.new_record? %>
+	<p>
+    <%= form.label :image, "Upload a file:" %><br />
+    <%= form.file_field :image %>
+  </p>
+<% else %>
+	<p>
+		Current image: <%= image_tag @image_file.image.url(:small) %>
+	</p>
+	<p>
+		<%= form.label :image, "Replace with:" %><br />
+    <%= form.file_field :image %>
+	</p>
+<% end %>

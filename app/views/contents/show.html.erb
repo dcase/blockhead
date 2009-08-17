@@ -1,0 +1,13 @@
+<p>
+  <b>Contentable:</b>
+  <%=h @content.contentable_id %>
+</p>
+
+<p>
+  <b>Contentable type:</b>
+  <%=h @content.contentable_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>

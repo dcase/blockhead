@@ -1,0 +1,8 @@
+<% if authorized?(:admin) %>
+	Add new 
+	<%= link_to "Section", new_section_path, :class => "modal" %> |
+	<%= link_to "Page", new_section_page_path(@section), :class => "modal" %>
+<% end %>
+<ul id="mainmenu">
+	<%= render :partial => "common/main_menu_item", :collection => @root_sections, :as => :item, :locals => { :page => false } %>
+</ul>

@@ -1,0 +1,17 @@
+<p>
+    <%= form.label :short_name %><br />
+    <%= form.text_field :short_name %>
+  </p>
+  <p>
+    <%= form.label :long_name %><br />
+    <%= form.text_field :long_name %>
+  </p>
+  <p>
+		Section: <br />
+    <%= form.collection_select :section_id, Section.all, :id, :long_name, { :prompt => true } %>
+  </p>
+  <p>
+    <%= form.label :published %><br />
+    <%= form.check_box :published, :checked => "checked" %>
+  </p>
+	<%= render :partial => "seo_profiles/form_include", :locals => { :f => form } %>

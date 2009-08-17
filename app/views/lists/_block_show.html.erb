@@ -1,0 +1,21 @@
+<% content_tag_for :ul, list do %>
+	<% for item in list.list_items do %>
+		<%= render :partial => "lists/list_item_show", :locals => { :item => item, :list => list }%>
+	<% end %>
+<% end %>
+<% content_for :page_js do %>
+	<% javascript_tag do %>
+		$( function() {
+			$('#list_<%= list.id %>').livequery( function() {
+					$(this).sortable({
+						handle: '.list_item_drag_handle',
+						items: 'li',
+						axis: 'y',
+						update: function() {
+							$.post('/list_items/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
+						} 
+					});
+				});
+		});
+	<% end %>
+<% end %>

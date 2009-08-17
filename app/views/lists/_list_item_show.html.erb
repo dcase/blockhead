@@ -1,0 +1,11 @@
+<% content_tag_for :li, item, :class => dom_id(item) do %>
+	<% if authorized? %>
+		<div class="menu_item_admin_controls" style="display: none;">
+			<%= link_to(image_tag('add.png', :size => '16x16'), new_list_list_item_path(list), :title => 'Add List Item', :class => "new_in_place_list_item update_new_in_place_item") %>
+			<%= link_to(image_tag('pencil.png', :size => '16x16'), edit_list_list_item_path(list,item), :title => 'Edit List Item', :class => "edit_in_place update_list_item_#{item.id}") %>
+			<%= link_to(image_tag('fail.png', :size => '16x16'), list_list_item_path(list,item), :class => "ajax-delete", :title => 'Delete List Item')%>
+			<%= image_tag('drag_handle.png', :size => '16x16', :class => 'list_item_drag_handle') %>
+		</div>
+	<% end %>
+	<%= textilize(item.output) %>
+<% end %>

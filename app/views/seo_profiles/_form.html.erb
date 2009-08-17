@@ -1,0 +1,31 @@
+<% form_for(@seo_profile, :html => { :class => "ajax modal2" }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :keywords %><br />
+    <%= f.text_area :keywords, :rows => 3 %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 3 %>
+  </p>
+  <p>
+    <%= f.label :h1, "H1 tag text:" %><br />
+    <%= f.text_field :h1 %>
+  </p>
+  <p>
+    <%= f.label :h2, "H2 tag text:" %><br />
+    <%= f.text_field :h2 %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

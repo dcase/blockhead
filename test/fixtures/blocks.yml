@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  short_name: MyString
+  long_name: MyString
+  parent_id: 1
+  position: 1
+  css_classes: MyString
+
+two:
+  short_name: MyString
+  long_name: MyString
+  parent_id: 1
+  position: 1
+  css_classes: MyString

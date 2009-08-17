@@ -1,0 +1,20 @@
+<h1>Listing copy_texts</h1>
+
+<table>
+  <tr>
+    <th>Output</th>
+  </tr>
+
+<% @copy_texts.each do |copy_text| %>
+  <tr>
+    <td><%=h copy_text.output %></td>
+    <td><%= link_to 'Show', copy_text %></td>
+    <td><%= link_to 'Edit', edit_copy_text_path(copy_text) %></td>
+    <td><%= link_to 'Destroy', copy_text, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New copy_text', new_copy_text_path %>

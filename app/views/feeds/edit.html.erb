@@ -1,0 +1,14 @@
+<h1>Editing feed</h1>
+
+<% form_for(@feed, :html => { :class => "ajax" }) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => f %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @feed %> |
+<%= link_to 'Back', feeds_path %>

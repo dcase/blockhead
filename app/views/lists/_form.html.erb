@@ -1,0 +1,24 @@
+<% @list = form.object %>
+<p>(uses <a href="http://www.textism.com/tools/textile/" target="_blank">Textile</a>):</p>
+<ul id="list_item_fields">
+	<% @list.list_items.build if @list.list_items.blank? %>
+	<% @list.list_items.each do |list_item| %>
+		<% form.fields_for :list_items, list_item do |list_item_form| %>
+			<%= render :partial => 'lists/list_item_fields', :locals => { :form => list_item_form } %>
+		<% end %>
+	<% end %>
+</ul>
+<%= add_list_item_link(form) %>
+<% content_for :page_js do %>
+	<% javascript_tag do %>
+		$( function() {
+			$('#list_item_fields').sortable({
+				handle: '.list_item_drag_handle',
+				items: 'li',
+				update: function() {
+					$.post('/list_item/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
+				} 
+			});
+		});
+	<% end %>
+<% end %>

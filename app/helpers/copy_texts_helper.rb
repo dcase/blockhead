@@ -1,0 +1,2 @@
+module CopyTextsHelper
+end

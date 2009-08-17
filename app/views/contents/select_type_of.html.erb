@@ -1,0 +1,5 @@
+What type of content do you want to add?<br />
+<%= select_tag "new_content_chooser", options_for_select({"Text" => "copy_texts", "Plain List" => "lists", "Feed" => "feeds" }, :selected => "copy_texts") %>
+<%= link_to "Go", new_block_content_path(@block, :content_controller => "copy_texts"), :id => "new_content_chooser_link" %>
+<div id="content_form_container">
+</div>

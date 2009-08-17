@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  title: MyString
+  keywords: MyText
+  description: MyText
+  h1: MyString
+  h2: MyString
+  seo_profilable_id: 1
+  seo_profilable_type: MyString
+
+two:
+  name: MyString
+  title: MyString
+  keywords: MyText
+  description: MyText
+  h1: MyString
+  h2: MyString
+  seo_profilable_id: 1
+  seo_profilable_type: MyString

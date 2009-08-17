@@ -1,0 +1,7 @@
+#modal #modal-content,
+#modal2 #modal-content2 {
+	height: 450px;
+}
+.clearfix{
+  min-height: 1%;
+}

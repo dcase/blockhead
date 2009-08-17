@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title><%= (title = yield(:title)) ? title : "Insight" %></title>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<meta name="language" content="en-us" />
+	<meta http-equiv="reply-to" content="info@commandc.com" />
+	<meta name="resource-type" content="document" />
+	<meta name="distribution" content="GLOBAL" />
+	<meta name="copyright" content="copyright Insight" />
+	<meta name="keywords" content="<%= yield :seo_keywords %>" />
+	<meta name="description" content="<%= yield :seo_description %>" />
+	<meta name="author" content="Command C, Custom Web Site Design, Website Design" />
+	<meta name="robots" content="index,follow" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<%= stylesheet_link_tag 'screen', 'modal', 'custom-theme/jquery-ui' %>
+	<!--[if IE]>
+	<%= stylesheet_link_tag 'ie' %>
+	<![endif]-->
+	<!--[if lt IE 7]>
+	<%= stylesheet_link_tag 'ie6' %>
+	<%= javascript_include_tag 'iepngfix_tilebg' %>
+	<![endif]-->
+	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	<%= javascript_include_tag 'jquery',
+	'jquery-ui',
+	'jquery.livequery',
+	'jquery.jqModal',
+	'jquery.scrollTo',
+	'jquery.serialScroll',
+	'application' %>
+	<%= yield :page_js %>
+</head>
+<body class="<%= yield :body_class %>">
+<h1 id="seo-heading1"><%= (heading = yield(:seo_heading1)) ? heading : "SEO heading" %></h1>
+<div id="container" class="<%= yield :container_class %>">
+	<div id="header" class="clearfix">
+		<%= render :partial => "common/font_size_switcher" %>
+	</div><!-- end 'header' -->
+	<div id="navigation">
+		<%= render :partial => "common/main_menu" %>
+	</div><!-- end 'navigation' -->
+	<div id="content" class="page">
+		<%= render :partial => "common/flash", :locals => { :flash => flash } %>
+		<%= yield :page_heading %>
+		<%= yield  %>
+	</div><!-- end 'content' -->
+</div><!-- end 'container' -->
+<div id="footer">
+</div><!-- end 'footer' -->
+<h2 id="seo-heading2"><%= (heading = yield(:seo_heading2)) ? heading : "SEO heading" %></h2>
+<% if authorized?(:admin) %>
+	<%= render :partial => 'common/admin_toolbar' %>
+<% end %>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<% form_for(@image_file, :html => { :class => "ajax modal2", :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => f %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

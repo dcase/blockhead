@@ -1,0 +1,10 @@
+img {behavior: url(/javascripts/iepngfix.htc);}
+div#content {
+	min-height: 350px;
+	height: auto !important;
+	height: 350px;
+}
+.clearfix {
+  height: 1%;
+  overflow: visible;
+}

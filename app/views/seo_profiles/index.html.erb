@@ -1,0 +1,11 @@
+<h1>Listing SEO Profiles</h1>
+<ul id="seo-profile-list">
+<% for seo_profile in @seo_profiles %>
+	<% content_tag_for(:li, seo_profile) do %>
+		<%= link_to image_tag('fail.png', :size => "16x16", :alt => "Delete SEO Profile"), seo_profile, :title => "Delete", :class => "ajax-delete" %>
+		<%= link_to seo_profile.name, edit_seo_profile_path(seo_profile), :class => "modal-new-window" %>
+	<% end %>
+<% end %>
+
+
+<%= link_to 'New SEO Profile', new_seo_profile_path, :class => "modal-new-window" %>

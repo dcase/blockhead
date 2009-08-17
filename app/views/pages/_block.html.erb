@@ -1,0 +1,57 @@
+<% block.css_classes += " nested_block_tabs" if block.nested_blocks_as_tabs? # Add class for tabs %>
+<% if block.parent.blank? then update_block = block else update_block = block.parent end # Set block for AJAX updating %>
+<% div_for block, :class => (dom_id(block) + " " + block.css_classes).rstrip do %>
+	<% if authorized?(:admin) %>
+		<div class="admin-links" style="display: none;">
+			Block: 
+			<%= link_to image_tag("add.png", :size => "16x16", :alt => "Add"), add_something_section_page_block_path(@section,@page,block), :class => "modal update_block_#{update_block.id}", :title => "Add" %>
+			<%= link_to image_tag("pencil.png", :size => "16x16", :alt => "Edit"), edit_section_page_block_path(@section,@page,block), :class => "modal update_block_#{update_block.id}", :title => "Edit" %>
+			<%= link_to image_tag("fail.png", :size => "16x16", :alt => "Delete"), [@section,@page,block], :class => "ajax-delete", :title => "Delete" %>
+			<% unless block.parent.blank? %>
+				<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Delete", :class => "block_drag_handle") unless block.parent.nested_blocks_as_tabs? %>
+			<% else %>
+				<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Delete", :class => "block_drag_handle") %>
+			<% end %>	
+		</div>
+	<% end %>
+	
+	<% if block.nested_blocks_as_tabs? %>
+		<ul>
+			<% block.children.each do |nested_block| %>
+				<% content_tag_for :li, nested_block, :tabbed, :class => dom_id(nested_block) do %>
+					<a href="#<%= dom_id(nested_block) %>"><span><%= nested_block.short_name %></span></a>
+				<% end %>
+			<% end %>
+		</ul>
+	<% else %>
+		<h4><%= block.long_name %></h4>
+	<% end %>
+
+	<%= render :partial => "blocks/content", :collection => block.contents, :as => :content, :locals => { :parent_block => block } %>
+	
+	<% if block.children.size > 0 %>
+		<%= render :partial => "pages/block", :collection => block.children, :as => :block %>
+	<% end %>
+
+	<%= render :partial => "common/scroll_buttons" %>
+<% end %>
+
+<% content_for :page_js do %>
+	<% if authorized?(:admin) %>
+		<% if block.nested_blocks_as_tabs? %>
+			<% javascript_tag do %>
+					$( function() {
+						$('.ui-tabs-nav', 'div#block_<%= block.id %>').livequery( function() {
+								$(this).sortable({
+									items: 'li',
+									axis: 'x',
+									update: function() {
+										$.post('/blocks/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
+									} 
+								});
+							});
+					});
+				<% end %>
+		<% end %>
+	<% end %>
+<% end %>

@@ -1,0 +1,28 @@
+<p>
+  <b>Width:</b>
+  <%=h @scroll.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @scroll.height %>
+</p>
+
+<p>
+  <b>Vertical:</b>
+  <%=h @scroll.vertical %>
+</p>
+
+<p>
+  <b>Scrollable:</b>
+  <%=h @scroll.scrollable_id %>
+</p>
+
+<p>
+  <b>Scrollable type:</b>
+  <%=h @scroll.scrollable_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_scroll_path(@scroll) %> |
+<%= link_to 'Back', scrolls_path %>

@@ -1,0 +1,58 @@
+<% unless defined?(@image_file) then @image_file = image_file end %>
+<%= image_tag @image_file.image.url(:small), :style => "float: right;" unless @image_file.new_record? %>
+<% form_for(@image_file, :html => { :id => "insert_image_file" }) do |form| %>
+	<p>
+	  <%= form.label :title %><br />
+	  <%= form.text_field :title %>
+	</p>
+	<p>
+	  <%= form.label :caption, "Caption (also used as alt text):" %><br />
+	  <%= form.text_field :caption %>
+	</p>
+	<p>
+	  <%= form.label :description %><br />
+	  <%= form.text_area :description, :rows => 3 %>
+	</p>
+	<p>
+	  <%= form.label :link_url, "Link to URL?:" %><br />
+	  <%= form.text_field :link_url, :size => 50 %>
+	</p>
+	<p id="image_url_container">
+		<%= label_tag "image_url", "Image URL:" %><br />
+		<% unless @image_file.new_record? %>
+	  	<%= text_field_tag "image_url", @image_file.image.url, :size => 50 %><br />
+		<% else %>
+			<%= text_field_tag "image_url", nil, :size => 50 %><br />
+		<% end %>
+		<%= label_tag "image_size", "Small:" %>
+		<%= radio_button_tag "image_size", "small" %>
+		<%= hidden_field_tag "image_url_small", @image_file.image.url(:small) %>
+		<%= label_tag "image_size", "Medium:" %>
+		<%= radio_button_tag "image_size", "medium" %>
+		<%= hidden_field_tag "image_url_medium", @image_file.image.url(:medium) %>
+		<%= label_tag "image_size", "Large:" %>
+		<%= radio_button_tag "image_size", "large" %>
+		<%= hidden_field_tag "image_url_large", @image_file.image.url(:large) %>
+		<%= label_tag "image_size", "Thumb:" %>
+		<%= radio_button_tag "image_size", "thumb" %>
+		<%= hidden_field_tag "image_url_thumb", @image_file.image.url(:thumb) %>
+	</p>
+	<p id="image_align_container">
+		<%= label_tag "image_align", "Alignment:" %><br />
+		<%= label_tag "image_align", "Left:" %>
+		<%= radio_button_tag "image_align", "left"%>
+		<%= label_tag "image_align", "Center:" %>
+		<%= radio_button_tag "image_align", "center"%>
+		<%= label_tag "image_align", "Right:" %>
+		<%= radio_button_tag "image_align", "right"%>
+		<%= label_tag "image_align", "None:" %>
+		<%= radio_button_tag "image_align", "none"%>
+	</p>
+	
+	<div id="insert_code_container">
+		<%= label_tag "output", "Copy and Paste Into Text:" %><br />
+		<%= text_field_tag "output", nil, :size => 50 %>
+		<%= form.submit "Generate Code", :id => "generate_image_file_code" %>
+	</div>
+		
+<% end %>

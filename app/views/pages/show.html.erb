@@ -1,0 +1,22 @@
+<% unless @page.seo_profile.blank? %>
+	<% content_for :title do %><%=h @page.seo_profile.title || "Blockhead" %><% end %>
+	<% content_for :seo_keywords do %><%=h @page.seo_profile.keywords || "Blockhead" %><% end %>
+	<% content_for :seo_description do %><%=h @page.seo_profile.description || "Blockhead" %><% end %>
+	<% content_for :seo_heading1 do %><%=h @page.seo_profile.h1 || "Blockhead" %><% end %>
+	<% content_for :seo_heading2 do %><%=h @page.seo_profile.h2 || "Blockhead" %><% end %>
+<% end %>
+<% content_for :body_class do %>
+	<%= "admin-mode" if authorized? %>
+	<%= @section.short_name %>
+	<%= @page.short_name %>
+<% end %>
+<% content_for :admin_toolbar do %>
+	<li><strong>Page:</strong></li>
+	<li><%= image_tag 'add.png', :size => "16x16" %><%= link_to 'Manage SEO', { :controller => 'seo_profiles', :action => 'index' }, :class => 'modal' %></li>
+	<li><%= image_tag("add.png", :size => "16x16", :alt => "New") %><%= link_to "Add Block", new_section_page_block_path(@section,@page), :class => "modal append_content", :title => "Edit" %></li>
+	<li><%= image_tag("pencil.png", :size => "16x16", :alt => "Edit") %><%= link_to "Edit page", edit_section_page_path(@section,@page), :class => "modal update_content", :title => "Edit" %></li>
+	<li><%= image_tag("fail.png", :size => "16x16", :alt => "Delete") %><%= link_to "Delete page", [@section,@page], :class => "ajax-delete", :title => "Delete" %></li>
+<% end %>
+<h3><%= @page.long_name %></h3>
+
+<%= render :partial => "pages/block", :collection => @page.blocks.roots, :as => :block %>

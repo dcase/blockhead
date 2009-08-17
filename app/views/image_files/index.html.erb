@@ -1,0 +1,8 @@
+<% @image_files.each do |image_file| %>
+	<% div_for image_file do %>
+		<%= image_tag image_file.image.url(:thumb) %>
+		<%= image_file.title %>
+		<%= link_to "insert", { :controller => "image_files", :action => "insert", :id => image_file}, :class => "insert_image_link" %>
+		<%= link_to image_tag('fail.png', :size => '16x16', :alt => 'Delete'), image_file, :class => "ajax-delete", :title => "Delete Image" %>
+	<% end %>
+<% end %>

@@ -1,0 +1,28 @@
+<h1>Listing scrolls</h1>
+
+<table>
+  <tr>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Vertical</th>
+    <th>Scrollable</th>
+    <th>Scrollable type</th>
+  </tr>
+
+<% @scrolls.each do |scroll| %>
+  <tr>
+    <td><%=h scroll.width %></td>
+    <td><%=h scroll.height %></td>
+    <td><%=h scroll.vertical %></td>
+    <td><%=h scroll.scrollable_id %></td>
+    <td><%=h scroll.scrollable_type %></td>
+    <td><%= link_to 'Show', scroll %></td>
+    <td><%= link_to 'Edit', edit_scroll_path(scroll) %></td>
+    <td><%= link_to 'Destroy', scroll, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New scroll', new_scroll_path %>

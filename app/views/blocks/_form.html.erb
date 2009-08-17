@@ -1,0 +1,44 @@
+  <%= form.hidden_field :parent_id %>
+  <p>
+    <%= form.label :short_name %><br />
+    <%= form.text_field :short_name %>
+  </p>
+  <p>
+    <%= form.label :long_name %><br />
+    <%= form.text_field :long_name %>
+  </p>
+  <p>
+    <%= form.label :css_classes %><br />
+    <%= form.text_field :css_classes %>
+  </p>
+	<p>
+    <%= form.label :nested_blocks_as_tabs, "Display nested blocks as tabs?: " %>
+    <%= form.check_box :nested_blocks_as_tabs %>
+  </p>
+	
+	<% if @content_controller %>
+		<p>
+			<%= form.label :contents, "Content:" %><br />
+		</p>
+		<% unless @block.contents.size > 0 %>
+			<% form.fields_for :contents, @block.contents.build do |content_form| %>
+					<% content_form.fields_for :contentable, Object::const_get(@content_controller.classify).new do |cf| %>
+						<%= cf.hidden_field :contentable_class, :value => cf.object.class %>
+						<div id="content-fields">
+							<%= render :partial => @content_controller + "/form", :locals => { :form => cf} %>
+						</div>
+					<% end%>
+			<% end %>
+		<% else %>
+			<% @block.contents.each do |content| %>
+				<% form.fields_for :contents, content do |content_form| %>
+						<% content_form.fields_for :contentable do |cf| %>
+							<%= cf.hidden_field :contentable_class, :value => cf.object.class %>
+							<div id="content-fields">
+								<%= render :partial => "#{cf.object.class.to_s.tableize}/form", :locals => { :form => cf} %>
+							</div>
+						<% end%>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>

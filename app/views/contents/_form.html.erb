@@ -1,0 +1,24 @@
+  <%= hidden_field_tag :block_id, @block.id if defined? @block %>
+	<p>
+		<%= form.label :name, "Descriptive Name (for reference and identification):" %><br />
+		<%= form.text_field :name %>
+	</p>
+	<p>
+		<%= form.label :css_classes, "CSS classes (separate with single spaces):" %><br />
+		<%= form.text_field :css_classes %>
+	</p>
+<% if form.object.new_record? %>
+	<% form.fields_for :contentable, Object::const_get(@content_controller.classify).new do |cf| %>
+		<%= cf.hidden_field :contentable_class, :value => cf.object.class %>
+		<div id="content-fields">
+			<%= render :partial => @content_controller + "/form", :locals => { :form => cf} %>
+		</div>
+	<% end%>
+<% else %>
+	<% form.fields_for :contentable do |cf| %>
+		<%= cf.hidden_field :contentable_class, :value => cf.object.class %>
+		<div id="content-fields">
+			<%= render :partial => "#{cf.object.class.to_s.tableize}/form", :locals => { :form => cf} %>
+		</div>
+	<% end %>
+<% end %>

@@ -1,0 +1,28 @@
+<p>
+  <b>Short name:</b>
+  <%=h @block.short_name %>
+</p>
+
+<p>
+  <b>Long name:</b>
+  <%=h @block.long_name %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @block.parent_id %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%=h @block.position %>
+</p>
+
+<p>
+  <b>Css classes:</b>
+  <%=h @block.css_classes %>
+</p>
+
+
+<%= link_to 'Edit', edit_block_path(@block) %> |
+<%= link_to 'Back', blocks_path %>

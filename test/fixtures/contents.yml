@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  contentable_id: 1
+  contentable_type: MyString
+
+two:
+  contentable_id: 1
+  contentable_type: MyString

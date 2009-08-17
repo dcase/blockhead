@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%=h @seo_profile.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @seo_profile.title %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%=h @seo_profile.keywords %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @seo_profile.description %>
+</p>
+
+<p>
+  <b>Alt prefix:</b>
+  <%=h @seo_profile.alt_prefix %>
+</p>
+
+<p>
+  <b>Heading:</b>
+  <%=h @seo_profile.heading %>
+</p>
+
+
+<%= link_to 'Edit', edit_seo_profile_path(@seo_profile) %> |
+<%= link_to 'Back', seo_profiles_path %>

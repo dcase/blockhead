@@ -1,0 +1,11 @@
+<div id="admin-toolbar-container">
+	<h3>admin toolbar</h3>
+	<ul id="page-admin-menu">
+		<li>
+			<%= image_tag("fail.png", :size => "16x16") %>
+			<%= link_to( "logout", user_session_path, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
+		</li>
+		<%= yield :admin_toolbar %>
+	</ul>
+	<%= image_tag 'drag_handle.png', :size => "16x16", :class => "admin_drag_handle" %>
+</div>

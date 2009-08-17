@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  width: 1
+  height: 1
+  vertical: false
+  scrollable_id: 1
+  scrollable_type: MyString
+
+two:
+  width: 1
+  height: 1
+  vertical: false
+  scrollable_id: 1
+  scrollable_type: MyString

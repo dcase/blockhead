@@ -1,0 +1,1 @@
+$("#content_<%= @content.id %>").replaceWith('<%= escape_javascript(render(:partial => "blocks/content", :object => @content)) %>');

@@ -1,0 +1,15 @@
+<% if session[:text_size].blank? then session[:text_size] = "medium" end %>
+<% css = (dom_id(content) + " " + (content.css_classes || "") + " " + session[:text_size]).strip %>
+<% div_for content, :class => css do %>
+	<% if authorized?(:admin) %>
+		<div class="admin-links" style="display: none;">
+			Content: 
+			<%= link_to image_tag("pencil.png", :size => "16x16"), edit_block_content_path(parent_block,content), :class => "modal update_content_#{content.id}", :title => "Edit" %>
+			<%= link_to image_tag("fail.png", :size => "16x16"), { :controller=>"blocks", :action=>"remove_content", :id => parent_block, :content_id => content }, :class => "ajax-delete", :title => "Delete" %>
+		</div>
+	<% end %>
+
+	<%= render :partial => "#{content.contentable.class.to_s.tableize}/block_show", :locals => { content.contentable_type.underscore.to_sym => content.contentable } %>
+
+	<%= render :partial => "common/scroll_buttons" %>
+<% end %>

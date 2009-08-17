@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  short_name: MyString
+  long_name: MyString
+  section_id: 1
+  position: 1
+  published: false
+
+two:
+  short_name: MyString
+  long_name: MyString
+  section_id: 1
+  position: 1
+  published: false
