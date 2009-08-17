@@ -3,5 +3,6 @@
 		<%= current_user.login %>
 		<%= link_to image_tag('pencil.png', :size => '16x16'), edit_user_path(current_user), :title => "Edit Profile", :class => "modal update_user" %><br />
 		<strong>role:</strong><br />
-		<%= current_user.role %>
+		<%= current_user.role %><br />
+		<%= link_to "add user", new_user_path, :class => "modal update_user" %>
 </div>
