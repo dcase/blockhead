@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  before_filter :permission
+  
   # GET /lists
   # GET /lists.xml
   def index

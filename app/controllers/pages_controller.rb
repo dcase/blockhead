@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_filter :permission, :except => :show
+  
   # GET /pages
   # GET /pages.xml
   def index
@@ -65,11 +67,11 @@ class PagesController < ApplicationController
   # PUT /pages/1
   # PUT /pages/1.xml
   def update
-    @section = Section.find(params[:section_id])
-    @page = @section.pages.find(params[:id])
+    @page = Page.find(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
+        @section = @page.section
         flash[:notice] = 'Page was successfully updated.'
         format.html { redirect_to([@section,@page]) }
         format.js { render :partial => "common/main_menu" }

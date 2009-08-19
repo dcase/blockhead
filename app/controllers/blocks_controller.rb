@@ -1,4 +1,6 @@
 class BlocksController < ApplicationController
+  before_filter :permission
+  
   # GET /blocks
   # GET /blocks.xml
   def index

@@ -1,4 +1,6 @@
 class ContentsController < ApplicationController
+  before_filter :permission
+  
   # GET /contents
   # GET /contents.xml
   def index

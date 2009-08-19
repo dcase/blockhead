@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         flash[:notice] = "Account registered!"
-        format.html { redirect_back_or_default account_url }
+        format.html { redirect_to :back }
         format.js { render :partial => "user" }
       else
         format.html { render :action => :new }

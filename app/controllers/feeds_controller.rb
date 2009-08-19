@@ -1,4 +1,6 @@
 class FeedsController < ApplicationController
+  before_filter :permission
+  
   # GET /feeds
   # GET /feeds.xml
   def index

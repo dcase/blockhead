@@ -1,4 +1,6 @@
 class CopyTextsController < ApplicationController
+  before_filter :permission
+  
   # GET /copy_texts
   # GET /copy_texts.xml
   def index

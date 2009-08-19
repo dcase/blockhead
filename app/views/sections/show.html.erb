@@ -1,3 +1,8 @@
+<% content_for :body_class do %>
+	<%= "admin-mode" if authorized? %>
+	<%= @section.short_name %>
+<% end %>
+
 Coming soon!
 
 <% content_for :admin_toolbar do %>

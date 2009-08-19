@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   has_many :blocks, :dependent => :destroy, :order => :position
   belongs_to :seo_profile
   
-  acts_as_list
+  acts_as_list :scope => :section
   
   validates_presence_of :short_name
   

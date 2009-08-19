@@ -1,4 +1,6 @@
 class SectionsController < ApplicationController
+  before_filter :permission, :except => :show
+  
   # GET /sections
   # GET /sections.xml
   def index
@@ -104,6 +106,21 @@ class SectionsController < ApplicationController
       format.html { redirect_to(root_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def order
+    unless params[:section].blank?
+      params[:section].each_with_index do |id, position|
+       Section.update(id, {:position => position+1})
+      end
+    end
+    unless params[:page].blank?
+      params[:page].each_with_index do |id, position|
+       Page.update(id, {:position => position+1})
+      end
+    end
+   
+    render :text => params.inspect
   end
 
 end

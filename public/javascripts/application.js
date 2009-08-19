@@ -440,5 +440,23 @@ $(document).ready( function() {
 		switchTextSize("large");
 		event.preventDefault();
 	});
+	
+	// Sorting main menu
+	
+	$(".admin-mode #mainmenu, .admin-mode #mainmenu ul").each( function() {
+	 	$(this).sortable({ 
+			items: "> li", 
+			axis: "y", 
+			containment: "parent", 
+			placeholder: "ui-state-highlight",
+			forcePlaceholderSize: true,
+			helper: 'clone',
+			tolerance: 'pointer',
+			update: function(event, ui) {
+				$.post('/sections/order', $(ui.item).parent().sortable('serialize'));
+			}
+		});
+	});
+	
 		
 });

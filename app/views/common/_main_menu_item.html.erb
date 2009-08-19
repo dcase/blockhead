@@ -13,8 +13,8 @@
 		<% end %>
 		<% unless item.children.blank? and item.pages.blank? %>
 			<% content_tag(:ul, :class => "level-#{item.ancestors.size}") do %>
-				<%= render :partial => "common/main_menu_item", :collection => ( authorized? ? item.pages : item.pages.find(:all, :conditions => { :published => true })), :as => :item, :locals => { :page => true, :section => item } %>
-				<%= render :partial => "common/main_menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :conditions => { :published => true})), :as => :item, :locals => { :page => false } %>
+				<%= render :partial => "common/main_menu_item", :collection => ( authorized? ? item.pages : item.pages.find(:all, :order => :position, :conditions => { :published => true })), :as => :item, :locals => { :page => true, :section => item } %>
+				<%= render :partial => "common/main_menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :order => :position, :conditions => { :published => true})), :as => :item, :locals => { :page => false } %>
 			<% end %>
 		<% end %>
 	<% end %>

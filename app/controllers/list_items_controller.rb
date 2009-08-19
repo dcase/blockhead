@@ -1,4 +1,6 @@
 class ListItemsController < ApplicationController
+  before_filter :permission
+  
   # GET /lists/new
   # GET /lists/new.xml
   def new
