@@ -9,7 +9,7 @@ Coming soon!
 	<li><strong>Section:</strong></li>
 	<% if authorized?(:admin) %>
 		<li><%= image_tag 'add.png', :size => "16x16" %><%= link_to "Add Section", new_section_path, :class => "modal update_navigation" %></li>
-		<li><%= image_tag("pencil.png", :size => "16x16", :alt => "Edit") %><%= link_to "Edit Section", edit_section_path(@section), :class => "modal", :title => "Edit" %></li>
+		<li><%= image_tag("pencil.png", :size => "16x16", :alt => "Edit") %><%= link_to "Edit Section", edit_section_path(@section), :class => "modal update_navigation", :title => "Edit" %></li>
 		<li><%= image_tag("fail.png", :size => "16x16", :alt => "Delete") %><%= link_to "Delete Section", @section, :confirm => "Are you sure?", :method => "delete", :title => "Delete" %></li>
 	<% end %>
 	<li><%= image_tag 'add.png', :size => "16x16" %><%= link_to "Add Page to Section", new_section_page_path(@section), :class => "modal update_navigation" %></li>
