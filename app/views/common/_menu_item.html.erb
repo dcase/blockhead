@@ -1,4 +1,5 @@
-<% content_tag_for(:li,item) do %>
+<% menu_item_counter == 0 ? li_class = { :class => "first" } : li_class = {} %>
+<% content_tag_for(:li,item, li_class) do %>
 	<% if is_page %>
 		<% if item.published and !authorized? %>
 			<%= link_to item.short_name, [section,item], :class => ( item == @page ? " current" : " notcurrent" ) %>
