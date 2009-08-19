@@ -31,21 +31,16 @@
 <body class="<%= yield :body_class %>">
 <h1 id="seo-heading1"><%= (heading = yield(:seo_heading1)) ? heading : "SEO heading" %></h1>
 <div id="container" class="<%= yield :container_class %>">
-	<div id="header" class="clearfix">
-		<%= render :partial => "common/logo" %>
-		<%= render :partial => "common/google_search" %>
-		<%= render :partial => "common/font_size_switcher" %>
-		<%= render :partial => "common/main_menu" %>
-	</div><!-- end 'header' -->
+	<%= render :partial => "header"%>
 
 	<div id="content" class="page">
 		<%= render :partial => "common/flash", :locals => { :flash => flash } %>
 		<%= yield :page_heading %>
 		<%= yield  %>
 	</div><!-- end 'content' -->
+	<%= render :partial => "footer"%>
 </div><!-- end 'container' -->
-<div id="footer">
-</div><!-- end 'footer' -->
+
 <h2 id="seo-heading2"><%= (heading = yield(:seo_heading2)) ? heading : "SEO heading" %></h2>
 <% if authorized? %>
 	<%= render :partial => 'common/admin_toolbar' %>
