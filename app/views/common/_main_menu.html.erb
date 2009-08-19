@@ -1,5 +1,5 @@
 <div id="navigation">
 	<ul id="mainmenu">
-		<%= render :partial => "common/main_menu_item", :collection => get_menu_sections, :as => :item, :locals => { :page => false } %>
+		<%= render :partial => "common/menu_item", :collection => get_menu_sections, :as => :item, :locals => { :show_pages => false, :is_page => false } %>
 	</ul>
 </div><!-- end 'navigation' -->
