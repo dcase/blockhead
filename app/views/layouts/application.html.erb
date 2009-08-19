@@ -31,14 +31,14 @@
 <body class="<%= yield :body_class %>">
 <h1 id="seo-heading1"><%= (heading = yield(:seo_heading1)) ? heading : "SEO heading" %></h1>
 <div id="container" class="<%= yield :container_class %>">
-	<%= render :partial => "header"%>
+	<%= render :partial => "common/header"%>
 
 	<div id="content" class="page">
 		<%= render :partial => "common/flash", :locals => { :flash => flash } %>
 		<%= yield :page_heading %>
 		<%= yield  %>
 	</div><!-- end 'content' -->
-	<%= render :partial => "footer"%>
+	<%= render :partial => "common/footer"%>
 </div><!-- end 'container' -->
 
 <h2 id="seo-heading2"><%= (heading = yield(:seo_heading2)) ? heading : "SEO heading" %></h2>
