@@ -1,0 +1,6 @@
+<div id="search">
+	<% form_tag "http://google.com", :method => :get do %>
+		<%= text_field_tag 'search' %>
+		<%= image_submit_tag 'search_submit.png' %>
+	<% end %>
+</div>
