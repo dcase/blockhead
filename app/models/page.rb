@@ -8,8 +8,8 @@ class Page < ActiveRecord::Base
   validates_presence_of :short_name
   
   def before_save
-    if long_name.blank?
-      long_name = short_name
+    if self.long_name.blank?
+      self.long_name = self.short_name
     end
   end
 end
