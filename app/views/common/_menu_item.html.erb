@@ -1,17 +1,20 @@
 <% menu_item_counter == 0 ? li_class = { :class => "first" } : li_class = {} %>
 <% content_tag_for(:li,item, li_class) do %>
+	<span>
 	<% if is_page %>
 		<% if item.published and !authorized? %>
 			<%= link_to item.short_name, [section,item], :class => ( item == @page ? " current" : " notcurrent" ) %>
 		<% elsif authorized? %>
 			<%= link_to item.short_name, [section,item], :class => ( item == @page ? " current" : " notcurrent" ) + " " + ( item.published ? "published" : "unpublished" ) %>
 		<% end %>
+		</span>
 	<% else %>
 		<% if item.published and !authorized? %>
 			<%= link_to item.short_name, item, :class => ( item == @section ? " current" : " notcurrent" ) %>
 		<% elsif authorized? %>
 			<%= link_to item.short_name, item, :class => ( item == @section ? " current" : " notcurrent" ) + " " + ( item.published ? "published" : "unpublished" ) %>
 		<% end %>
+		</span>
 		<% unless item.children.blank? and item.pages.blank? %>
 			<% if show_pages %>
 				<% authorized? ? collection = item.pages : collection = item.pages.find(:all, :order => :position, :conditions => { :published => true }) %>
