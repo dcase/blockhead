@@ -37,6 +37,9 @@ div.content, div.block {
 	position: relative;
 	border: 2px solid transparent;
 }
+div.block {
+	padding-top: 23px;
+}
 
 div.scroll-buttons {
 	width: 12px;
