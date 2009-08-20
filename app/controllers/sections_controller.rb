@@ -35,8 +35,6 @@ class SectionsController < ApplicationController
           else
             render :controller => "pages", :action => "show", :id => @page, :section_id => @section, :template => "pages/show"
           end
-        else
-            render :controller => "sections", :action => "show", :id => @section
         end # show.html.erb
       end
       format.xml  { render :xml => @section }
