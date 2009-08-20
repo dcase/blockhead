@@ -16,17 +16,14 @@
 		<% end %>
 		</span>
 		<% unless item.children.blank? and item.pages.blank? %>
-			<% if show_pages %>
-				<% authorized? ? collection = item.pages : collection = item.pages.find(:all, :order => :position, :conditions => { :published => true }) %>
-				<% if collection.size > 1 %>
-					<% content_tag(:ul, :class => "level-#{item.ancestors.size}") do %>
+			<% authorized? ? collection = item.pages : collection = item.pages.find(:all, :order => :position, :conditions => { :published => true }) %>
+			<% unless item.children.blank? and collection.size <= 1 %>
+		 		<% content_tag(:ul, :class => "level-#{item.ancestors.size}") do %>
+					<% if show_pages and collection.size > 1 %>
 						<%= render :partial => "common/menu_item", :collection => collection, :as => :item, :locals => { :is_page => true, :section => item, :show_pages => show_pages } %>
 					<% end %>
-				<% end%>
-			<% end %>
-			<% content_tag(:ul, :class => "level-#{item.ancestors.size}") do %>
-				<%= render :partial => "common/menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :order => :position, :conditions => { :published => true})), :as => :item, :locals => { :is_page => false, :show_pages => show_pages } %>
-			<% end %>
+					<%= render :partial => "common/menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :order => :position, :conditions => { :published => true})), :as => :item, :locals => { :is_page => false, :show_pages => show_pages } %>
+				<% end %>
 		<% end %>
 	<% end %>
 <% end %>
