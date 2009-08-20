@@ -18,6 +18,8 @@ class PagesController < ApplicationController
   def show
     @section = Section.find(params[:section_id])
     @page = @section.pages.find(params[:id])
+    
+    @section_root = @section.set_root
 
     respond_to do |format|
       format.html # show.html.erb
