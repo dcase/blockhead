@@ -46,6 +46,7 @@ class ImageFilesController < ApplicationController
   # POST /image_files.xml
   def create
     @image_file = ImageFile.new(params[:image_file])
+    @image_file.build_content({ :name => @image_file.title })
 
     respond_to do |format|
       if @image_file.save
@@ -53,7 +54,7 @@ class ImageFilesController < ApplicationController
         format.html { redirect_to(@image_file) }
         format.js do
           responds_to_parent do
-            render :js => "tabs.tabs('url',0,'" + url_for( :controller => "image_files", :action => "insert", :id => @image_file) + "');tabs.tabs('select',0);"
+            render :js => "modal_tabs.tabs('url',0,'" + url_for( :controller => "image_files", :action => "insert", :id => @image_file) + "');tabs.tabs('select',0);"
             debugger
           end
         end

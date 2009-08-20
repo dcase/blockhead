@@ -14,7 +14,7 @@
   <%= form.label :link_url, "Link to URL?:" %><br />
   <%= form.text_field :link_url %>
 </p>
-<% if @image_file.new_record? %>
+<% if form.object.new_record? %>
 	<p>
     <%= form.label :image, "Upload a file:" %><br />
     <%= form.file_field :image %>
