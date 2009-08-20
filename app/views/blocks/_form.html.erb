@@ -12,6 +12,10 @@
     <%= form.text_field :css_classes %>
   </p>
 	<p>
+    <%= form.label :display_title, "Display the title?:" %><br />
+    <%= form.check_box :display_title %>
+  </p>
+	<p>
     <%= form.label :nested_blocks_as_tabs, "Display nested blocks as tabs?: " %>
     <%= form.check_box :nested_blocks_as_tabs %>
   </p>
