@@ -1,5 +1,4 @@
 <% menu_item_counter == 0 ? li_class = { :class => "first" } : li_class = {} %>
-<% item.short_name = "<span>" + item.short_name + "</span>" %>
 <% content_tag_for(:li,item, li_class) do %>
 	<% if is_page %>
 		<% if item.published and !authorized? %>
