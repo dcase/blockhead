@@ -8,11 +8,10 @@ module ApplicationHelper
   ActionController::RecordIdentifier.singular_class_name(*args, &block)
   end
   
-  def get_menu_sections
-    unless authorized?
-      Section.all(:order => :position, :conditions => { :published => true, :parent_id => nil })
-    else
-      Section.all(:order => :position, :conditions => { :parent_id => nil })
-    end
+  def get_menu_sections(section = nil)
+    conditions = {}
+    section.blank? ? conditions.merge!({ :parent_id => nil }) : conditions.merge!({ :parent_id => section })
+    conditions.merge!({ :published => true }) unless authorized?
+    Section.all(:order => :position, :conditions => conditions )
   end
 end

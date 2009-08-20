@@ -33,7 +33,7 @@
 <div id="container" class="<%= yield :container_class %>">
 	<%= render :partial => "common/header"%>
 
-	<div id="content" class="page">
+	<div id="content" class="page <%= yield :content_class %>">
 		<%= render :partial => "common/flash", :locals => { :flash => flash } %>
 		<%= yield :page_heading %>
 		<%= yield  %>
