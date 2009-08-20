@@ -15,7 +15,7 @@ class SectionsController < ApplicationController
   # GET /sections/1
   # GET /sections/1.xml
   def show
-    unless params[:id].nil?
+    unless params[:id].blank?
       @section = Section.find(params[:id])
       redirect = true
     else
