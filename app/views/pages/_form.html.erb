@@ -14,4 +14,8 @@
     <%= form.label :published %><br />
     <%= form.check_box :published, :checked => "checked" %>
   </p>
+	<p>
+    <%= form.label :display_title, "Display the title?:" %><br />
+    <%= form.check_box :display_title %>
+  </p>
 	<%= render :partial => "seo_profiles/form_include", :locals => { :f => form } %>

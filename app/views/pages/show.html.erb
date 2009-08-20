@@ -24,6 +24,9 @@
 	<li><%= image_tag 'add.png', :size => "16x16" %><%= link_to 'Manage SEO', { :controller => 'seo_profiles', :action => 'index' }, :class => 'modal' %></li>
 	<li><%= image_tag("add.png", :size => "16x16", :alt => "New") %><%= link_to "Add Block to Page", new_section_page_block_path(@section,@page), :class => "modal append_content", :title => "Edit" %></li>
 <% end %>
-<h3><%= @page.long_name %></h3>
-
+<% if @section.display_title %>
+	<h3 class="heading myriadpro"><%= @section.long_name %></h3>
+<% elsif @page.display_title %>
+	<h3 class="heading myriadpro"><%= @page.long_name %></h3>
+<% end %>
 <%= render :partial => "pages/block", :collection => @page.blocks.roots, :as => :block %>
