@@ -1,3 +1,4 @@
+<%= will_paginate @image_files %>
 <% @image_files.each do |image_file| %>
 	<% div_for image_file do %>
 		<%= image_tag image_file.image.url(:thumb) %>
@@ -6,3 +7,4 @@
 		<%= link_to image_tag('fail.png', :size => '16x16', :alt => 'Delete'), image_file, :class => "ajax-delete", :title => "Delete Image" %>
 	<% end %>
 <% end %>
+<%= will_paginate @image_files %>

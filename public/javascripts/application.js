@@ -458,5 +458,13 @@ $(document).ready( function() {
 		});
 	});
 	
+	// Pagination for Contents browser and ImageFiles browser
+	$(".ui-tabs .pagination a").livequery("click", function(event) {
+		current_tab  = modal_tabs.data("selected.tabs");
+		modal_tabs.tabs('url', current_tab, $(this).attr('href'));
+		modal_tabs.tabs('load', current_tab);
+		event.preventDefault();
+	});
+	
 		
 });

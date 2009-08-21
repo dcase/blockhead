@@ -51,6 +51,7 @@ class PagesController < ApplicationController
   def create
     @section = Section.find(params[:section_id])
     @page = @section.pages.build(params[:page])
+    @block = @page.blocks.build({ :short_name => @page.short_name, :display_title => true })
 
     respond_to do |format|
       if @page.save

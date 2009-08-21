@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Content Type</th>
+  </tr>
+
+<% @contents.each do |content| %>
+	<% f.fields_for :block_contents, @block.block_contents.build do |content_fields| %>
+  	<% content_tag_for(:tr, content, :class => dom_id(content)) do %>
+	    <td><%=h content.name %></td>
+	    <td><%=h content.contentable.class.display_name %></td>
+	    <td><%= content_fields.hidden_field :content_id, :value => content.id %>
+				<% unless content.blocks.include?(@block) %>
+					Add?: <%= content_fields.check_box :do_add %>
+				<% else %>
+					Already Added
+					<%= content_fields.hidden_field :do_add, :value => "0" %>
+				<% end %></td>
+			<td><%= link_to image_tag("fail.png", :size => "16x16", :alt => "Delete"), content, :class => "ajax-delete", :title => "Delete from Library" %></td>
+	  <% end %>
+	<% end %>
+<% end %>
+</table>

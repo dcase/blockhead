@@ -4,7 +4,7 @@ class ImageFilesController < ApplicationController
   # GET /image_files
   # GET /image_files.xml
   def index
-    @image_files = ImageFile.all
+    @image_files = ImageFile.paginate( :per_page => 5, :page => params[:page] )
 
     respond_to do |format|
       format.html # index.html.erb

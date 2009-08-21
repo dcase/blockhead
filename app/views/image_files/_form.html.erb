@@ -21,7 +21,7 @@
   </p>
 <% else %>
 	<p>
-		Current image: <%= image_tag @image_file.image.url(:small) %>
+		Current image: <%= image_tag form.object.image.url(:small) %>
 	</p>
 	<p>
 		<%= form.label :image, "Replace with:" %><br />
