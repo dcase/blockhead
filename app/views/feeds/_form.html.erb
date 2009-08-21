@@ -1,4 +1,8 @@
 <p>
-  <%= form.label :link %><br />
+  <%= form.label :link, "Copy and paste the feed URL here:" %><br />
   <%= form.text_field :link %>
+</p>
+<p>
+  <%= form.label :display_count, "# of entries to display:" %><br />
+  <%= form.select :display_count, (1..25).to_a   %>
 </p>

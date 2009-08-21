@@ -1,6 +1,6 @@
 <h3><%= feed.title %></h3>
 <% content_tag_for(:ul, feed) do %>
-	<% feed.feed_entries[0...9].each do |entry| %>
+	<% feed.feed_entries[0...feed.display_count].each do |entry| %>
 		<% content_tag_for(:li, entry) do %>
 			<%= link_to entry.name, entry.url, :target => "_blank" %>
 		<% end %>

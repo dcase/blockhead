@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   # before_filter :get_published_sections_for_main_menu
+  before_filter :set_default_section
   after_filter :discard_flash_on_ajax
   
   # AuthLogic
@@ -21,6 +22,10 @@ class ApplicationController < ActionController::Base
   end
   
   private
+  
+  def set_default_section
+    @section = Section.find(:first)
+  end
   
   def get_published_sections_for_main_menu
     @root_sections = Section.all(:order => :position, :conditions => { :published => true, :parent_id => nil })
