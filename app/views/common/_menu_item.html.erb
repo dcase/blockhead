@@ -8,9 +8,9 @@
 		<% end %>
 	<% else %>
 		<% if item.published and !authorized? %>
-			<%= link_to item.short_name, item, :class => ( item == @section ? " current" : " notcurrent" ) %>
+			<%= link_to item.short_name, item, :class => ( item == @section || @section.ancestors.include?(item) ? " current" : " notcurrent" ) %>
 		<% elsif authorized? %>
-			<%= link_to item.short_name, item, :class => ( item == @section ? " current" : " notcurrent" ) + " " + ( item.published ? "published" : "unpublished" ) %>
+			<%= link_to item.short_name, item, :class => ( item == @section || @section.ancestors.include?(item) ? " current" : " notcurrent" ) + " " + ( item.published ? "published" : "unpublished" ) %>
 		<% end %>
 		<% unless item.children.blank? and item.pages.blank? %>
 			<% authorized? ? collection = item.pages : collection = item.pages.find(:all, :order => :position, :conditions => { :published => true }) %>
