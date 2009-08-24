@@ -7,8 +7,8 @@
 <% end %>
 <% content_for :body_class do %>
 	<%= "admin-mode" if authorized? %>
-	<%= @section.short_name %>
-	<%= @page.short_name %>
+	<%= @section.short_name.parameterize %>
+	<%= @page.short_name.parameterize %>
 <% end %>
 <% content_for :admin_toolbar do %>
 	<li><strong>Section:</strong></li>
