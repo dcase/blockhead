@@ -23,7 +23,7 @@
 	<li><%= image_tag("pencil.png", :size => "16x16", :alt => "Edit") %><%= link_to "Edit Page", edit_section_page_path(@section,@page), :class => "modal update_navigation", :title => "Edit" %></li>
 	<li><%= image_tag("fail.png", :size => "16x16", :alt => "Delete") %><%= link_to "Delete Page", [@section,@page], :confirm => "Are you sure?", :method => "delete", :title => "Delete" %></li>
 	<li><%= image_tag 'add.png', :size => "16x16" %><%= link_to 'Manage SEO', { :controller => 'seo_profiles', :action => 'index' }, :class => 'modal' %></li>
-	<li><%= image_tag("add.png", :size => "16x16", :alt => "New") %><%= link_to "Add Block to Page", new_section_page_block_path(@section,@page), :class => "modal append_content", :title => "Edit" %></li>
+	<li><%= image_tag("add.png", :size => "16x16", :alt => "New") %><%= link_to "Add Block to Page", new_section_page_block_path(@section,@page), :class => "modal append_main", :title => "Edit" %></li>
 <% end %>
 
 <% unless @section.parent.blank? || @section.siblings.blank? %>

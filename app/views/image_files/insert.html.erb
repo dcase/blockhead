@@ -36,6 +36,7 @@
 		<%= label_tag "image_size", "Thumb:" %>
 		<%= radio_button_tag "image_size", "thumb" %>
 		<%= hidden_field_tag "image_url_thumb", @image_file.image.url(:thumb) %>
+		<%= label_tag "image_size", "Original:" %>
 		<%= radio_button_tag "image_size", "original" %>
 		<%= hidden_field_tag "image_url_thumb", @image_file.image.url %>
 	</p>
