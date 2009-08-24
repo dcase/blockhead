@@ -102,7 +102,6 @@ class ImageFilesController < ApplicationController
   def destroy
     @image_file = ImageFile.find(params[:id])
     @image_file.destroy
-    @image_file - ImageFile.new
 
     respond_to do |format|
       format.html { redirect_to(image_files_url) }
