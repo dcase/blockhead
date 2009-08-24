@@ -74,9 +74,6 @@ div#sidebar {
 	float: left;
 	width: 150px;
 }
-.has-sidebar .block {
-	margin-left: 153px;
-}
 
 /*****************
 * Typography
@@ -283,7 +280,9 @@ div.menu_item_admin_controls {
 ******************/
 
 .autoscroll .scroll-pane {
-	height: 200px;
 	padding-top: 20px;
 	overflow: hidden;
+}
+.scroll-pane { 
+	height: inherit;
 }

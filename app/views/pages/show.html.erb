@@ -31,6 +31,8 @@
 	<%= render :partial => "common/page_menu" %>
 <% end %>
 
+<div id="main">
+
 <% if @section.display_title %>
 	<h3 class="heading myriadpro"><%= @section.long_name %></h3>
 <% elsif @page.display_title %>
@@ -38,3 +40,6 @@
 <% end %>
 
 <%= render :partial => "pages/block", :collection => @page.blocks.roots, :as => :block %>
+
+</div><!-- end 'main' -->
+

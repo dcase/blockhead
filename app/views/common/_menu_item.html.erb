@@ -1,5 +1,5 @@
 <% menu_item_counter == 0 ? li_class = { :class => "first" } : li_class = {} %>
-<% item == @section ? show_pages : false %>
+<% show_pages = (item == @section ? show_pages : false) %>
 <% content_tag_for(:li,item, li_class) do %>
 	<% if is_page %>
 		<% if item.published and !authorized? %>
