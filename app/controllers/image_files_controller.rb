@@ -54,7 +54,7 @@ class ImageFilesController < ApplicationController
         format.html { redirect_to(@image_file) }
         format.js do
           responds_to_parent do
-            render :js => "modal_tabs.tabs('url',0,'" + url_for( :controller => "image_files", :action => "insert", :id => @image_file) + "');tabs.tabs('select',0);"
+            render :js => "modal_tabs.tabs('url',0,'" + url_for( :controller => "image_files", :action => "insert", :id => @image_file) + "');modal_tabs.tabs('select',0);"
           end
         end
         format.xml  { render :xml => @image_file, :status => :created, :location => @image_file }
