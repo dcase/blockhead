@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_filter :permission
+  before_filter :permission, :except => :remember_text_size
   
   # GET /contents
   # GET /contents.xml

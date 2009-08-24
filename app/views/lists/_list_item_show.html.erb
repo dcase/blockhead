@@ -7,5 +7,5 @@
 			<%= image_tag('drag_handle.png', :size => '16x16', :class => 'list_item_drag_handle') %>
 		</div>
 	<% end %>
-	<%= textilize(item.output) %>
+	<%= textilize_without_paragraph(item.output) %>
 <% end %>

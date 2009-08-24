@@ -4,18 +4,20 @@
 	<% end %>
 <% end %>
 <% content_for :page_js do %>
-	<% javascript_tag do %>
-		$( function() {
-			$('#list_<%= list.id %>').livequery( function() {
-					$(this).sortable({
-						handle: '.list_item_drag_handle',
-						items: 'li',
-						axis: 'y',
-						update: function() {
-							$.post('/list_items/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
-						} 
+	<% if authorized? %>
+		<% javascript_tag do %>
+			$( function() {
+				$('#list_<%= list.id %>').livequery( function() {
+						$(this).sortable({
+							handle: '.list_item_drag_handle',
+							items: 'li',
+							axis: 'y',
+							update: function() {
+								$.post('/list_items/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
+							} 
+						});
 					});
-				});
-		});
+			});
+		<% end %>
 	<% end %>
 <% end %>
