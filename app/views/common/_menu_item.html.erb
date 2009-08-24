@@ -1,4 +1,5 @@
 <% menu_item_counter == 0 ? li_class = { :class => "first" } : li_class = {} %>
+<% item == @section ? show_pages : false %>
 <% content_tag_for(:li,item, li_class) do %>
 	<% if is_page %>
 		<% if item.published and !authorized? %>
@@ -19,7 +20,7 @@
 					<% if show_pages and collection.size > 1 %>
 						<%= render :partial => "common/menu_item", :collection => collection, :as => :item, :locals => { :is_page => true, :section => item, :show_pages => show_pages } %>
 					<% end %>
-					<%= render :partial => "common/menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :order => :position, :conditions => { :published => true})), :as => :item, :locals => { :is_page => false, :show_pages => ( item == @section ? show_pages : false) } %>
+					<%= render :partial => "common/menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :order => :position, :conditions => { :published => true})), :as => :item, :locals => { :is_page => false, :show_pages => show_pages } %>
 				<% end %>
 			<% end %>
 		<% end %>
