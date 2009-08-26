@@ -191,6 +191,9 @@ div.menu_item_admin_controls {
 #modal textarea {
 	width: 550px;
 }
+div.pagination {
+	margin: 15px 0;
+}
 
 /*****************
 * Tabs

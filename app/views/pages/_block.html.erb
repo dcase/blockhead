@@ -1,5 +1,6 @@
 <% block.nested_blocks_as_tabs? ? block.css_classes += " nested_block_tabs" : false # Add class for tabs %>
-<% block.parent.blank? ? update_block = block : update_block = block.parent # Set block for AJAX updating %>
+<% (block.parent.blank? || block.nested_blocks_as_tabs?) ? update_block = block : update_block = block.parent # Set block for AJAX updating %>
+
 <% div_for block, :class => (dom_id(block) + " " + block.css_classes).rstrip do %>
 	<% if authorized?(:admin) %>
 		<div class="admin-links" style="display: none;">
