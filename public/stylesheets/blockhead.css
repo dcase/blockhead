@@ -194,6 +194,9 @@ div.menu_item_admin_controls {
 div.pagination {
 	margin: 15px 0;
 }
+.even {
+	background: #aeaeae;
+}
 
 /*****************
 * Tabs

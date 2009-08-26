@@ -1,6 +1,6 @@
 <%= will_paginate @image_files %>
 <% @image_files.each do |image_file| %>
-	<% div_for image_file do %>
+	<% div_for image_file, :class =>  cycle('odd','even') do %>
 		<%= image_tag image_file.image.url(:thumb) %>
 		<%= image_file.title %>
 		<%= link_to "insert", { :controller => "image_files", :action => "insert", :id => image_file}, :class => "insert_image_link" %>

@@ -6,7 +6,7 @@
 
 <% @contents.each do |content| %>
 	<% f.fields_for :block_contents, @block.block_contents.build do |content_fields| %>
-  	<% content_tag_for(:tr, content, :class => dom_id(content)) do %>
+  	<% content_tag_for :tr, content, :class => dom_id(content) + " " + cycle('odd','even') do %>
 	    <td><%=h content.name %></td>
 	    <td><%=h content.contentable.class.display_name %></td>
 	    <td><%= content_fields.hidden_field :content_id, :value => content.id %>
