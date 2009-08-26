@@ -1,1 +1,5 @@
-<%= textilize(copy_text.output) %>
+<% unless copy_text.is_html? %>
+	<%= textilize(copy_text.output) %>
+<% else %>
+	<%= copy_text.output %>
+<% end %>
