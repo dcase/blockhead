@@ -131,7 +131,7 @@ ul#page-admin-menu li img {
 	margin-right: 3px;
 }
 
-ul.list li {
+ul.list li, ul.quote_list li {
 	position: relative;
 }
 

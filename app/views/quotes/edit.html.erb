@@ -1,0 +1,7 @@
+<% form_for([@quote_list,@quote], :html => { :class => "ajax" }) do |f| %>
+	<%= f.error_messages %>
+	
+	<%= render :partial => f %>
+	
+	<%= f.submit "Update" %>
+<% end %>

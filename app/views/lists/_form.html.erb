@@ -16,7 +16,7 @@
 				handle: '.list_item_drag_handle',
 				items: 'li',
 				update: function() {
-					$.post('/list_item/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
+					$.post('/list_items/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
 				} 
 			});
 		});

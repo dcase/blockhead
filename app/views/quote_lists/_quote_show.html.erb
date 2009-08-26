@@ -1,0 +1,19 @@
+<% content_tag_for :li, quote do %>
+	<% if authorized? %>
+		<div class="menu_item_admin_controls" style="display: none;">
+			<%= link_to(image_tag('add.png', :size => '16x16'), new_quote_list_quote_path(quote_list), :title => 'Add Quote', :class => "modal append_quote_list_#{quote_list.id}") %>
+			<%= link_to(image_tag('pencil.png', :size => '16x16'), edit_quote_list_quote_path(quote_list,quote), :title => 'Edit Quote', :class => "modal update_quote_#{quote.id}") %>
+			<%= link_to(image_tag('fail.png', :size => '16x16'), quote_list_quote_path(quote_list,quote), :class => "ajax-delete", :title => 'Delete Quote')%>
+			<%= image_tag('drag_handle.png', :size => '16x16', :class => 'quote_drag_handle') %>
+		</div>
+	<% end %>
+	<%= quote.title %>
+	<div class="quote_display" style="display: none;">
+		<div class="quote_text">
+			<%= '"' + textilize_without_paragraph(quote.output) + '"' %>
+		</div>
+		<div class="quote_credit">
+			<%= "-" + quote.attributed_to %>
+		</div>
+	</div>
+<% end %>

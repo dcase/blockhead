@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :quotes
+
+  map.resources :quote_lists, :has_many => :quotes
+
   map.resources :feeds, :has_many => :feed_entries
 
   map.resources :image_files, :collection => { :manage => :get, :insert => :get }

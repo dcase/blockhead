@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  output: MyText
+  attributed_to: MyString
+  quote_list_id: 1
+  position: 1
+
+two:
+  title: MyString
+  output: MyText
+  attributed_to: MyString
+  quote_list_id: 1
+  position: 1

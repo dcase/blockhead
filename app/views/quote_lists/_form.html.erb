@@ -1,0 +1,24 @@
+<% @quote_list = form.object %>
+<p>(uses <a href="http://www.textism.com/tools/textile/" target="_blank">Textile</a>):</p>
+<ul id="quote_fields">
+	<% @quote_list.quotes.build if @quote_list.quotes.blank? %>
+	<% @quote_list.quotes.each do |quote| %>
+		<% form.fields_for :quotes, quote do |quote_form| %>
+			<%= render :partial => 'quote_lists/quote_fields', :locals => { :form => quote_form } %>
+		<% end %>
+	<% end %>
+</ul>
+<%= add_quote_link(form) %>
+<% content_for :page_js do %>
+	<% javascript_tag do %>
+		$( function() {
+			$('#quote_fields').sortable({
+				handle: '.quote_drag_handle',
+				items: 'div',
+				update: function() {
+					$.post('/quotes/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
+				} 
+			});
+		});
+	<% end %>
+<% end %>

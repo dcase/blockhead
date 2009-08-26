@@ -37,7 +37,7 @@ jQuery.fn.submitWithAjax = function() {
 $(document).ready( function() {
 	
 	// Show admin controls on menu item hover
-	$('.list li').livequery( function() {
+	$('.list li, .quote_list li').livequery( function() {
 		 $(this).hover( 
 			function() {
 				$('.menu_item_admin_controls',this).show();
@@ -468,6 +468,11 @@ $(document).ready( function() {
 	
 	// Focus on login form
 	$("#new_user_session input[type=text]:first").focus();
+	
+	// Quote List
+	$(".quote_list > li").livequery("click", function(event) {
+		$("#quote_display").html($(".quote_display", this).html());
+	});
 	
 		
 });

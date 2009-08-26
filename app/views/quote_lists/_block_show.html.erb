@@ -1,0 +1,33 @@
+<% unless quote_list.quotes.blank? %>
+	<div id="quote_display">
+		<div class="quote_text">
+			<%= '"' + textilize_without_paragraph(quote_list.quotes.first.output) + '"' unless quote_list.quotes.blank? %>
+		</div>
+		<div class="quote_credit">
+			<%= "-" + quote_list.quotes.first.attributed_to unless quote_list.quotes.blank? %>
+		</div>
+	</div>
+<% end %>
+<% content_tag_for :ul, quote_list do %>
+	<% for quote in quote_list.quotes do %>
+		<%= render :partial => "quote_lists/quote_show", :locals => { :quote => quote, :quote_list => quote_list }%>
+	<% end %>
+<% end %>
+<% content_for :page_js do %>
+	<% if authorized? %>
+		<% javascript_tag do %>
+			$( function() {
+				$('#quote_list_<%= quote_list.id %>').livequery( function() {
+						$(this).sortable({
+							handle: '.quote_drag_handle',
+							items: 'li',
+							axis: 'y',
+							update: function() {
+								$.post('/quotes/order', $(this).sortable('serialize') +'&'+'authenticity_token='+ encodeURIComponent(AUTH_TOKEN));
+							} 
+						});
+					});
+			});
+		<% end %>
+	<% end %>
+<% end %>

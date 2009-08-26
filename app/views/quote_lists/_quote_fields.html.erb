@@ -1,0 +1,4 @@
+<% div_for(form.object) do %>
+	<%= render :partial => "quotes/form", :locals => { :form => form } %>
+	<%= remove_quote_link(form) %>
+<% end %>
