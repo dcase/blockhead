@@ -386,7 +386,7 @@ $(document).ready( function() {
 	$.fn.checkScrolls = function() {
 		this.each( function() {
 			if ($('> .scroll-pane', this).length == 0) {
-				$('.content, .block',this).wrapAll("<div class=\"scroll-pane\"></div>").wrapAll("<div class=\"scroll-content\"></div>");
+				$('*',this).not(".admin-links, .scroll-buttons").wrapAll("<div class=\"scroll-pane\"></div>").wrapAll("<div class=\"scroll-content\"></div>");
 			}
 		
 			pane = $('> .scroll-pane', this);
@@ -418,7 +418,7 @@ $(document).ready( function() {
 		});
 	}
 	
-	$('.block.autoscroll').livequery( function() {
+	$('.block.autoscroll,.content.autoscroll').livequery( function() {
 		$(this).checkScrolls();
 	});
 	
