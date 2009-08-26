@@ -195,7 +195,10 @@ div.pagination {
 	margin: 15px 0;
 }
 .even {
-	background: #aeaeae;
+	background: #dfdfdf;
+}
+.even td { 
+	border-color: #dfdfdf;
 }
 
 /*****************
