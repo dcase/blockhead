@@ -34,7 +34,7 @@ module ApplicationHelper
         node << pages
       end
       unless section.children.blank?
-        section_level(section.children)
+        node << section_level(section.children)
       end
       output << node
     end
@@ -46,6 +46,18 @@ module ApplicationHelper
     levels = section_level(sections)
     return levels
   end
-        
+  
+  def page_breadcrumb(page)
+    section = page.section
+    output = ""
+    sections = section.ancestors
+    sections << section
+    sections.each do |a|
+      output += a.short_name + " > "
+    end
+    output += page.short_name
+    
+    return output
+  end
         
 end

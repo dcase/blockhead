@@ -17,7 +17,7 @@
 	  <%= form.label :link_url, "Link to URL?:" %><br />
 	  <%= form.text_field :link_url, :size => 50 %><br />
 		<%= label_tag 	"page_link", "Or link to internal page?:" %>
-		<%= select_tag "page_link", grouped_options_for_select(get_sections_and_pages_array.insert(0,["",[""]])) %>
+		<%= select_tag "page_link", options_for_select(Page.all.collect {|p| [page_breadcrumb(p),section_page_path(p.section,p)]}.insert(0,"")) %>
 	</p>
 	<p id="image_url_container">
 		<%= label_tag "image_url", "Image URL:" %><br />
