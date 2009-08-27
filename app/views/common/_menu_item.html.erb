@@ -2,16 +2,16 @@
 <% show_pages = (item == @section ? show_pages : false) %>
 <% content_tag_for(:li,item, li_class) do %>
 	<% if is_page %>
-		<% if item.published and !authorized? %>
-			<%= link_to item.short_name, [section,item], :class => ( item == @page ? "current" : "notcurrent" ) %>
-		<% elsif authorized? %>
+		<% if authorized? %>
 			<%= link_to item.short_name, [section,item], :class => ( item == @page ? "current" : "notcurrent" ) + " " + ( item.published ? "published" : "unpublished" ) %>
+		<% elsif item.published %>
+			<%= link_to item.short_name, [section,item], :class => ( item == @page ? "current" : "notcurrent" ) %>
 		<% end %>
 	<% else %>
-		<% if item.published and !authorized? %>
-			<%= link_to item.short_name, item, :class => ( item == @section || @section.ancestors.include?(item) ? "current" : "notcurrent" ) %>
-		<% elsif authorized? %>
+		<% if authorized? %>
 			<%= link_to item.short_name, item, :class => ( item == @section || @section.ancestors.include?(item) ? "current" : "notcurrent" ) + " " + ( item.published ? "published" : "unpublished" ) %>
+		<% elsif item.published %>
+			<%= link_to item.short_name, item, :class => ( item == @section || @section.ancestors.include?(item) ? "current" : "notcurrent" ) %>
 		<% end %>
 		<% unless item.children.blank? and item.pages.blank? %>
 			<% authorized? ? collection = item.pages : collection = item.pages.find(:all, :order => :position, :conditions => { :published => true }) %>

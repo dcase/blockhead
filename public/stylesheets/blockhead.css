@@ -60,7 +60,9 @@ body {
 	position: relative;
 	text-align: center;
 }
-
+div#alert {
+	color: white;
+}
 div#container {
 	padding: 15px;
 	text-align: left;
@@ -179,7 +181,9 @@ div.menu_item_admin_controls {
 .block .active-admin {
 	border: 2px solid #666;
 }
-
+.unpublished {
+	font-style: italic;
+}
 /*****************
 * Modal Window
 ******************/
@@ -289,7 +293,6 @@ div.pagination {
 ******************/
 
 .autoscroll .scroll-pane {
-	padding-top: 20px;
 	overflow: hidden;
 }
 .scroll-pane { 

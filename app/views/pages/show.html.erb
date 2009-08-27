@@ -5,12 +5,35 @@
 	<% content_for :seo_heading1 do %><%=h @page.seo_profile.h1 || "Blockhead" %><% end %>
 	<% content_for :seo_heading2 do %><%=h @page.seo_profile.h2 || "Blockhead" %><% end %>
 <% end %>
+
 <% content_for :body_class do %>
 	<%= "admin-mode" if authorized? %>
 	<%= @section_root.short_name.parameterize unless @section_root == @section %>
 	<%= @section.short_name.parameterize %>
 	<%= @page.short_name.parameterize %>
 <% end %>
+
+<% content_for :alert do %>
+	<% unless @section.published? %>
+		<div style="background: green;">
+			<% form_for(@section) do |f| %>
+				<%= f.hidden_field :published, :value => 1 %>
+				This section is not published.
+				<%= f.submit "Publish" %>
+			<% end %>
+		</div>
+	<% end %>
+	<% unless @page.published? %>
+		<div style="background: blue;">
+			<% form_for([@section,@page]) do |f| %>
+				<%= f.hidden_field :published, :value => 1 %>
+				This page is not published.
+				<%= f.submit "Publish" %>
+			<% end %>
+			</div>
+	<% end %>
+<% end %>
+
 <% content_for :admin_toolbar do %>
 	<li><strong>Section:</strong></li>
 	<% if authorized?(:admin) %>

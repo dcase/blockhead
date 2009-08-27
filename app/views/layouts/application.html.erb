@@ -29,6 +29,7 @@
 	<%= yield :page_js %>
 </head>
 <body class="<%= yield :body_class %>">
+<%= (alert = yield(:alert)) ? "<div id=\"alert\">" + alert + "</div>" : "" %>
 <h1 id="seo-heading1"><%= (heading = yield(:seo_heading1)) ? heading : "SEO heading" %></h1>
 <div id="container" class="<%= yield :container_class %>">
 	<%= render :partial => "common/header"%>

@@ -48,6 +48,9 @@ $(document).ready( function() {
 		);
 	});
 	
+	// Fade the alerts so they're not so distracting
+	$("#alert").fadeTo("slow", 0.5);
+	
 	// Setup modals
 	
 	$('body').append('<div id="modal"><img id="modal-close" src="/images/modal_button_close.png" width="30" height="30" alt="Close Window" /><div id="modal-content"></div></div>');
@@ -386,7 +389,7 @@ $(document).ready( function() {
 	$.fn.checkScrolls = function() {
 		this.each( function() {
 			if ($('> .scroll-pane', this).length == 0) {
-				$('*',this).not(".admin-links, .scroll-buttons").wrapAll("<div class=\"scroll-pane\"></div>").wrapAll("<div class=\"scroll-content\"></div>");
+				$('> *',this).not(".admin-links, .scroll-buttons").wrapAll("<div class=\"scroll-pane\"></div>").wrapAll("<div class=\"scroll-content\"></div>");
 			}
 		
 			pane = $('> .scroll-pane', this);
