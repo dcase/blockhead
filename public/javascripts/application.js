@@ -307,11 +307,16 @@ $(document).ready( function() {
 	
 	// Insert Image File
 	$('form#insert_image_file').livequery("change", function(){
-		var insert_code, image_url, alt_text, link_url, align;
+		var insert_code, image_url, alt_text, link_url, page_link, align;
 		var centered = "";
 		
 		// Set Image URI
 		$('#image_url').val($('#image_url_container input:checked').next().val());
+		
+		// Set Page URL if there is one
+		if($("#page_link").val() != "") {
+			$('#image_file_link_url').val($('#page_link').val());
+		}
 		
 		// Image URI
 		image_url = $('#image_url').val();
