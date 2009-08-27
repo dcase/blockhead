@@ -6,8 +6,8 @@ end
 <div id="user">
 		<strong>logged-in as:</strong><br />
 		<%= user.login %>
-		<%= link_to image_tag('pencil.png', :size => '16x16'), edit_user_path(user, :edit_self => "true"), :title => "Edit Profile", :class => "modal update_user" %><br />
-		<%= link_to image_tag('preview.png', :size => '16x16'), user, :title => "View", :class => "modal" %>
+		<%= link_to image_tag('pencil.png', :size => '16x16'), edit_user_path(user, :edit_self => "true"), :title => "Edit Profile", :class => "modal update_user" %>
+		<%= link_to image_tag('preview.png', :size => '16x16'), user, :title => "View", :class => "modal" %><br />
 		<strong>role:</strong><br />
 		<%= user.role %><br />
 		<% if authorized?(:admin) %>
