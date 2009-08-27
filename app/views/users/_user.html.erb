@@ -1,8 +1,15 @@
+<% 
+if user.blank?
+	user = current_user
+end
+%>
 <div id="user">
 		<strong>logged-in as:</strong><br />
-		<%= current_user.login %>
-		<%= link_to image_tag('pencil.png', :size => '16x16'), edit_user_path(current_user), :title => "Edit Profile", :class => "modal update_user" %><br />
+		<%= user.login %>
+		<%= link_to image_tag('pencil.png', :size => '16x16'), edit_user_path(user, :edit_self => "true"), :title => "Edit Profile", :class => "modal update_user" %><br />
 		<strong>role:</strong><br />
-		<%= current_user.role %><br />
-		<%= link_to "add user", new_user_path, :class => "modal update_user" %>
+		<%= user.role %><br />
+		<% if authorized?(:admin) %>
+			<%= link_to "manage users", users_path, :class => "modal" %>
+		<% end %>
 </div>

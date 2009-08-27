@@ -50,10 +50,7 @@ class SeoProfilesController < ApplicationController
       if @seo_profile.save
         flash[:notice] = 'SeoProfile was successfully created.'
         format.html { redirect_to(@seo_profile) }
-        format.js do
-          @seo_profiles = SeoProfile.find(:all)
-          render :action => "index"
-        end
+        format.js { render :partial => 'seo_profile', :locals => { :seo_profile => @seo_profile } }
         format.xml  { render :xml => @seo_profile, :status => :created, :location => @seo_profile }
       else
         format.html { render :action => "new" }
@@ -72,10 +69,7 @@ class SeoProfilesController < ApplicationController
       if @seo_profile.update_attributes(params[:seo_profile])
         flash[:notice] = 'SeoProfile was successfully updated.'
         format.html { redirect_to(@seo_profile) }
-        format.js do
-          @seo_profiles = SeoProfile.find(:all)
-          render :action => "index"
-        end
+        format.js { render :partial => 'seo_profile', :locals => { :seo_profile => @seo_profile } }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

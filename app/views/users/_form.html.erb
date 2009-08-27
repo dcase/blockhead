@@ -1,3 +1,9 @@
+<% unless params[:edit_self].blank? %>
+	<%= form.hidden_field :edit_self, :value => "#{params[:edit_self]}"%>
+<% else %>
+	<%= form.hidden_field :edit_self %>
+<% end %>
+
 <%= form.label :login %><br />
 <%= form.text_field :login %><br />
 <br />
@@ -9,3 +15,10 @@
 <br />
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
+
+<% if authorized?(:admin) %>
+	<br />
+	<%= form.label :role %><br />
+	<%= form.select :role, ["admin","user"] %><br />
+	<br />
+<% end %>

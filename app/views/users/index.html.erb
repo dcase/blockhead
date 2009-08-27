@@ -1,0 +1,16 @@
+<h1>Manage Users</h1>
+
+<table id="manage-users">
+	<tr>
+		<th>Login:</th>
+		<th>Role:</th>
+	</tr>
+	<% @users.each do |user| %>
+		<%= render :partial => 'users/user_row', :locals => { :user => user } %>
+	<% end %>
+</table>
+
+<%= image_tag("add.png", :size => "16x16") %>
+<%= link_to "Add User", new_user_path, :class => "modal-new-window append_manage-users" %>
+
+<%= will_paginate @users %>

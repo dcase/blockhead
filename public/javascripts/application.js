@@ -6,6 +6,8 @@ var modal_trigger;
 var edit_in_place_trigger;
 var original_content;
 var modal_tabs;
+var modal;
+var modal2;
 
 // rails auth token enabled in jquery
 $(document).ajaxSend(function(event, request, settings) {
@@ -57,7 +59,7 @@ $(document).ready( function() {
 	
 	
 	// Main modal window
-	$('#modal').jqm({
+	modal = $('#modal').jqm({
 		modal: true,
 		ajax: '@href',
 		ajaxText: "<h1>Loading...</h1>",
@@ -75,7 +77,7 @@ $(document).ready( function() {
 	$('.modal-new-window').livequery( function() {
 		if ( $('#modal2').length == 0) {
 			$('body').append('<div id="modal2"><img id="modal-close2" src="/images/modal_button_close.png" width="30" height="30" alt="Close Window" /><div id="modal-content2"></div></div>');
-			$('#modal2').jqm({
+			modal2 = $('#modal2').jqm({
 				modal: true,
 				ajax: '@href',
 				ajaxText: "<h1>Loading...</h1>",
@@ -99,13 +101,19 @@ $(document).ready( function() {
 
 	$('form.ajax').livequery( function(){
 		if ($(this).parent().hasClass(".ui-tabs-panel")) {
+			is_tab = true;
 			current_window = $(this).parent();
+			current_modal = modal;
 			current_trigger = modal_trigger;
 		}
 		else if ($(this).hasClass("modal2")) {
+			is_tab = false;
+			current_modal = modal2;
 			current_window = $('#modal-content2');
 			current_trigger = modal2_trigger;
 		} else {
+			is_tab = false;
+			current_modal = modal;
 			current_window = $('#modal-content');
 			current_trigger = modal_trigger;
 		}
@@ -130,13 +138,13 @@ $(document).ready( function() {
 								update_id = update_class[0].substr(7);
 								$('#' + update_id + ", ." + update_id).replaceWith(data);
 								current_window.html("");
-								$('#modal').jqmHide();
+								current_modal.jqmHide();
 							}
 							else if ( append_class.length > 0 ) {
 								append_id = append_class[0].substr(7);
 								$('#' + append_id + ", ." + append_id).append(data);
 								current_window.html("");
-								$('#modal').jqmHide();
+								current_modal.jqmHide();
 							}
 							else {
 								current_window.html(data);

@@ -1,0 +1,4 @@
+<% content_tag_for(:li, seo_profile) do %>
+	<%= link_to image_tag('fail.png', :size => "16x16", :alt => "Delete SEO Profile"), seo_profile, :title => "Delete", :class => "ajax-delete" %>
+	<%= link_to seo_profile.name, edit_seo_profile_path(seo_profile), :class => "modal-new-window update_seo_profile_#{seo_profile.id}" %>
+<% end %>

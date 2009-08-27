@@ -27,7 +27,11 @@ class Section < ActiveRecord::Base
     elsif self.pages.empty? && !self.children.empty?
       return self.children.first.find_first_page
     elsif !self.pages.empty?
-      return self, self.pages.first
+      unless UserSession.find
+        return self, self.pages.find(:first, :conditions => { :published => true})
+      else
+        return self, self.pages.first
+      end
     else
       return self, false
     end

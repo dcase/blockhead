@@ -14,23 +14,25 @@
 <% end %>
 
 <% content_for :alert do %>
-	<% unless @section.published? %>
-		<div style="background: green;">
-			<% form_for(@section) do |f| %>
-				<%= f.hidden_field :published, :value => 1 %>
-				This section is not published.
-				<%= f.submit "Publish" %>
-			<% end %>
-		</div>
-	<% end %>
-	<% unless @page.published? %>
-		<div style="background: blue;">
-			<% form_for([@section,@page]) do |f| %>
-				<%= f.hidden_field :published, :value => 1 %>
-				This page is not published.
-				<%= f.submit "Publish" %>
-			<% end %>
+	<% if authorized? %>
+		<% unless @section.published? %>
+			<div style="background: green;">
+				<% form_for(@section) do |f| %>
+					<%= f.hidden_field :published, :value => 1 %>
+					This section is not published.
+					<%= f.submit "Publish" %>
+				<% end %>
 			</div>
+		<% end %>
+		<% unless @page.published? %>
+			<div style="background: blue;">
+				<% form_for([@section,@page]) do |f| %>
+					<%= f.hidden_field :published, :value => 1 %>
+					This page is not published.
+					<%= f.submit "Publish" %>
+				<% end %>
+				</div>
+		<% end %>
 	<% end %>
 <% end %>
 
