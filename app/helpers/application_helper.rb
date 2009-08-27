@@ -22,4 +22,30 @@ module ApplicationHelper
     conditions.merge!({ :published => true }) unless authorized?
     Section.all(:order => :position, :conditions => conditions )
   end
+  
+  def section_level(sections)
+    output = []
+    sections.each do |section|
+      node = [section.short_name]
+      unless section.pages.blank?
+        pages = section.pages.all.collect {|p|
+          [p.short_name,section_page_path(section,p)]
+        }
+        node << pages
+      end
+      unless section.children.blank?
+        section_level(section.children)
+      end
+      output << node
+    end
+    return output
+  end
+  
+  def get_sections_and_pages_array
+    sections = Section.roots
+    levels = section_level(sections)
+    return levels
+  end
+        
+        
 end
