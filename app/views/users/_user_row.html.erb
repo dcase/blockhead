@@ -1,6 +1,7 @@
 <% content_tag_for :tr, user do %>
 	<td><%= user.login %></td>
 	<td><%= user.role %></td>
+	<td><%= link_to image_tag('preview.png', :size => '16x16'), user, :title => "View", :class => "modal-new-window" %></td>
 	<td><%= link_to image_tag("pencil.png", :size => "16x16"), edit_user_path(user, :edit_self => 0), :title => "Edit User", :class => "modal-new-window update_user_#{user.id}" %></td>
 	<td><%= link_to image_tag("fail.png", :size => "16x16"), user, :title => "Delete User", :class => "ajax-delete" %></td>
 <% end %>
