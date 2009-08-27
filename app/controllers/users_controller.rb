@@ -38,15 +38,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = @current_user
+    @user = User.find(params[:id]) || @current_user
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) || @current_user
   end
 
   def update
-    @user = User.find(params[:id]) # makes our views "cleaner" and more consistent
+    @user = User.find(params[:id]) || @current_user # makes our views "cleaner" and more consistent
     
     respond_to do |format|
       if @user.update_attributes(params[:user])
