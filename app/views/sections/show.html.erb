@@ -1,6 +1,6 @@
 <% content_for :body_class do %>
 	<%= "admin-mode" if authorized? %>
-	<%= @section.short_name %>
+	<%= dom_id(@section) %>
 <% end %>
 
 Coming soon!

@@ -387,7 +387,7 @@ $(document).ready( function() {
 	});
 	
 	// Sortable blocks
-	$('div.page, div.block').not('.nested_block_tabs').livequery( function() {
+	$('#main, div.block').not('.nested_block_tabs').livequery( function() {
 			$(this).sortable({
 				handle: '.block_drag_handle',
 				items: 'div.block',

@@ -8,9 +8,9 @@
 
 <% content_for :body_class do %>
 	<%= "admin-mode" if authorized? %>
-	<%= @section_root.short_name.parameterize unless @section_root == @section %>
-	<%= @section.short_name.parameterize %>
-	<%= @page.short_name.parameterize %>
+	<%= "root_" + dom_id(@section_root) unless @section_root == @section %>
+	<%= dom_id(@section) %>
+	<%= dom_id(@page) %>
 <% end %>
 
 <% content_for :alert do %>
