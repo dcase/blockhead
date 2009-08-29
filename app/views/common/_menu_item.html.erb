@@ -18,9 +18,9 @@
 			<% unless item.children.blank? and collection.size <= 1 %>
 		 		<% content_tag(:ul, :class => "level-#{item.ancestors.size}") do %>
 					<% if show_pages and collection.size > 1 %>
-						<%= render :partial => "common/menu_item", :collection => collection, :as => :item, :locals => { :is_page => true, :section => item, :show_pages => show_pages } %>
+						<%= render :partial => "common/menu_item", :collection => collection, :as => :item, :locals => { :is_page => true, :section => item, :show_pages => show_pages, :show_all_pages => show_all_pages } %>
 					<% end %>
-					<%= render :partial => "common/menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :order => :position, :conditions => { :published => true})), :as => :item, :locals => { :is_page => false, :show_pages => show_pages } %>
+					<%= render :partial => "common/menu_item", :collection => ( authorized? ? item.children : item.children.find(:all, :order => :position, :conditions => { :published => true})), :as => :item, :locals => { :is_page => false, :show_pages => show_pages, :show_all_pages => show_all_pages } %>
 				<% end %>
 			<% end %>
 		<% end %>
