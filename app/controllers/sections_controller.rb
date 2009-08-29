@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  before_filter :permission, :except => :show
+  before_filter :permission, :except => [:show,:sitemap]
   
   # GET /sections
   # GET /sections.xml
@@ -121,6 +121,9 @@ class SectionsController < ApplicationController
     end
    
     render :text => params.inspect
+  end
+  
+  def sitemap
   end
 
 end
