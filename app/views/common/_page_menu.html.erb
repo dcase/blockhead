@@ -1,5 +1,5 @@
 <div id="sidebar">
 	<ul id="pagemenu">
-		<%= render :partial => "common/menu_item", :collection => get_menu_sections(@section_root.id), :as => :item, :locals => { :show_pages => true, :is_page => false } %>
+		<%= render :partial => "common/menu_item", :collection => get_menu_sections(@section_root.id), :as => :item, :locals => { :show_pages => true, :is_page => false, , :show_all_pages => false } %>
 	</ul>
 </div><!-- end 'sidebar' -->
