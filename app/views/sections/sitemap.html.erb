@@ -1,3 +1,10 @@
+<% content_for :body_class do %>
+	<%= "admin-mode" if authorized? %>
+  sitemap
+<% end %>
+
+<h3>Sitemap.</h3>
+
 <ul id="sitemap">
 	<%= render :partial => "common/menu_item", :collection => get_menu_sections, :as => :item, :locals => { :show_pages => true, :is_page => false, :show_all_pages => true } %>
 </ul>
