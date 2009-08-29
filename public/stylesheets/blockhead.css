@@ -149,6 +149,7 @@ div.menu_item_admin_controls {
 }
 #mainmenu div.menu_item_admin_controls {
 	width: 20px;
+	left: -20px;
 }
 
 .admin-links {
