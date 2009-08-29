@@ -62,6 +62,8 @@
 	<h3 class="heading myriadpro"><%= @section.long_name %></h3>
 <% elsif @page.display_title %>
 	<h3 class="heading myriadpro"><%= @page.long_name %></h3>
+<% elsif !@section.parent.blank? %>
+	<h3 class="heading myriadpro"><%= @section.parent.long_name %></h3>
 <% end %>
 
 <%= render :partial => "pages/block", :collection => @page.blocks.roots %>
