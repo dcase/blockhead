@@ -9,6 +9,9 @@
 		<% end %>
 	<% else %>
 		<% if authorized? %>
+			<div class="menu_item_admin_controls" style="display: none;">
+				<%= link_to(image_tag('pencil.png', :size => '16x16'), edit_section_path(item), :title => 'Edit Section', :class => "modal") %>
+			</div>
 			<%= link_to item.short_name, item, :class => ( item == @section || @section.ancestors.include?(item) ? "current" : "notcurrent" ) + " " + ( item.published ? "published" : "unpublished" ) %>
 		<% elsif item.published %>
 			<%= link_to item.short_name, item, :class => ( item == @section || @section.ancestors.include?(item) ? "current" : "notcurrent" ) %>
