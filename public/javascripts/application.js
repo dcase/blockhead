@@ -39,7 +39,7 @@ jQuery.fn.submitWithAjax = function() {
 $(document).ready( function() {
 	
 	// Show admin controls on menu item hover
-	$('.list li, .quote_list li, #mainmenu li, #pagemenu li').livequery( function() {
+	$('.list li, .quote_list li, #mainmenu > li').livequery( function() {
 		 $(this).hover( 
 			function() {
 				$('.menu_item_admin_controls',this).show();

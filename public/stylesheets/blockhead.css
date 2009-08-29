@@ -147,6 +147,9 @@ div.menu_item_admin_controls {
 	border: 1px solid #ccc;
 	padding: 1px;
 }
+#mainmenu div.menu_item_admin_controls {
+	width: 20px;
+}
 
 .admin-links {
 	position: absolute;
