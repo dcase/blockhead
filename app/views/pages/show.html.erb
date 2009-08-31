@@ -52,7 +52,7 @@
 <% end %>
 
 <% unless @section.parent.blank? || ( @section.siblings.blank? and @section.pages.size == 1 )  %>
-	<% content_for :container_class do %>has-sidebar<% end %>
+	<% content_for :container_class do %>has-sidebar-left<% end %>
 	<%= render :partial => "common/page_menu" %>
 <% end %>
 
