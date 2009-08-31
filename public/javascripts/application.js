@@ -474,7 +474,7 @@ $(document).ready( function() {
 	
 	// Font size switcher
 	function switchTextSize(size) {
-		$(".content").removeClass("small medium large").addClass(size);
+		$(".content").removeClass("small medium large current").addClass(size).addClass("current");
 		$.post("/contents/remember_text_size", { text_size : size});
 		$('.block.autoscroll').checkScrolls();
 	}
