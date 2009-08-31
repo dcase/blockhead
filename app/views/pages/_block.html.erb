@@ -1,13 +1,16 @@
+<% block.css_classes += " " + dom_id(block) %>
 <% block.nested_blocks_as_tabs? ? block.css_classes += " nested_block_tabs" : false # Add class for tabs %>
 <% (block.parent.blank? || block.nested_blocks_as_tabs?) ? update_block = block : update_block = block.parent # Set block for AJAX updating %>
+<% block_div_options = ( block.height.blank? ? { :class => block.css_classes } : { :class => block.css_classes + " autoscroll", :style => "height: #{block.height}px;"} ) %>
 
-<% div_for block, :class => (dom_id(block) + " " + block.css_classes).rstrip do %>
+<% div_for block, block_div_options do %>
 	<% if authorized?(:admin) %>
 		<div class="admin-links" style="display: none;">
 			Block: 
 			<%= link_to image_tag("add.png", :size => "16x16", :alt => "Add"), add_something_section_page_block_path(@section,@page,block), :class => "modal update_block_#{update_block.id}", :title => "Add" %>
 			<%= link_to image_tag("pencil.png", :size => "16x16", :alt => "Edit"), edit_section_page_block_path(@section,@page,block), :class => "modal update_block_#{update_block.id}", :title => "Edit" %>
 			<%= link_to image_tag("fail.png", :size => "16x16", :alt => "Delete"), [@section,@page,block], :class => "ajax-delete", :title => "Delete" %>
+			<%= link_to image_tag("reset.png", :size => "16x16", :alt => "Reset Height"), {}, :class => "reset-block-height", :title => "Reset Block Height" %>
 			<% unless block.parent.blank? %>
 				<% unless block.parent.nested_blocks_as_tabs? %>
 					<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Change Order", :class => "block_drag_handle") %>

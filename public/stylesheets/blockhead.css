@@ -36,6 +36,7 @@ div.content, div.block {
 }
 div.block {
 	padding-top: 23px;
+	margin-bottom: 15px;
 }
 
 div.scroll-buttons {
@@ -306,9 +307,7 @@ div.pagination {
 * Automatic Scrolling Test
 ******************/
 
-.autoscroll .scroll-pane {
+.scroll-pane  {
 	overflow: hidden;
-}
-.scroll-pane { 
 	height: inherit;
 }

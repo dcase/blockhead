@@ -167,5 +167,10 @@ class BlocksController < ApplicationController
     end
     render :text => params.inspect
   end
+  
+  def resize
+    @block = Block.update(params[:id], { :height => params[:height], :width => params[:width]})
+    render :text => params.inspect
+  end
 
 end

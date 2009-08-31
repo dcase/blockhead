@@ -410,6 +410,28 @@ $(document).ready( function() {
 			});
 		});
 		
+	// Resizble blocks
+	$(".admin-mode div.block").livequery( function() {
+		$(this).resizable({
+			containment: "div#main",
+			handles: "s",
+			minHeight: 50,
+			stop: function(event,ui) {
+				$.post('/blocks/resize/' + $(this).attr('id').split("_").pop(), ui.size);
+				$(this).checkScrolls();
+			}
+		});
+	});
+	
+	//Reset block height
+	$(".reset-block-height").livequery("click", function(event){
+		block = $(this).parents(".block:first");
+		block.css({ width: "auto", height: "auto"});
+		$.post('/blocks/resize/' + block.attr('id').split("_").pop(), "height=&width=");
+		$(block).checkScrolls();
+		event.preventDefault();
+		});
+		
 	// Automatic scroll buttons	
 	$.fn.checkScrolls = function() {
 		this.each( function() {
