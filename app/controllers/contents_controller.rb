@@ -56,7 +56,8 @@ class ContentsController < ApplicationController
   # POST /contents.xml
   def create
     @block = Block.find(params[:block_id])
-    @content = @block.contents.create!(params[:content])
+    @content = @block.contents.build(params[:content])
+    @content_controller = @content.contentable.class.to_s.tableize
     @page = @block.page
     @section = @page.section
 

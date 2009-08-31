@@ -124,6 +124,7 @@ class SectionsController < ApplicationController
   end
   
   def sitemap
+    @section = Section.new
   end
 
 end

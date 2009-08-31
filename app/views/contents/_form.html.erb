@@ -7,7 +7,7 @@
 		<%= form.label :css_classes, "CSS classes (separate with single spaces):" %><br />
 		<%= form.text_field :css_classes %>
 	</p>
-<% if form.object.new_record? %>
+<% if form.object.new_record? and form.object.contentable.blank? %>
 	<% form.fields_for :contentable, Object::const_get(@content_controller.classify).new do |cf| %>
 		<%= cf.hidden_field :contentable_class, :value => cf.object.class %>
 		<div id="content-fields">

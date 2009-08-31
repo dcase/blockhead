@@ -99,6 +99,19 @@ body {
 }
 
 /*****************
+* Forms
+******************/
+.fieldWithErrors label {
+	padding: 0 0 3px 18px;
+	background: transparent url(/images/alert.png) no-repeat 0 0;
+	color: red;
+}
+.fieldWithErrors input,
+.fieldWithErrors textarea {
+	background: #ffffcc;
+}
+
+/*****************
 * Admin
 ******************/
 div#admin-toolbar-container {
