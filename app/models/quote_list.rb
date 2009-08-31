@@ -8,7 +8,17 @@ class QuoteList < ActiveRecord::Base
   
   attr_accessor :contentable_class
   
+  validate :at_least_one
+  
   def self.display_name
     "Quote List"
+  end
+  
+  private
+  
+  def at_least_one
+    if self.quotes.blank?
+      errors.add_to_base(": Please add at least one quote to the list.")
+    end
   end
 end

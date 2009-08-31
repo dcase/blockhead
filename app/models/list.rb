@@ -8,8 +8,18 @@ class List < ActiveRecord::Base
   
   attr_accessor :contentable_class
   
+  validate :at_least_one
+  
   def self.display_name
     "Plain List"
   end
   
+  private
+  
+  def at_least_one
+    if self.list_items.blank?
+      errors.add_to_base(": Please add at least one item to the list.")
+    end
+  end
+
 end
