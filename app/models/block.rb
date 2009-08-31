@@ -1,7 +1,7 @@
 class Block < ActiveRecord::Base
   belongs_to :page
-  has_many :block_contents, :dependent => :destroy
-  has_many :contents, :through => :block_contents, :dependent => :destroy
+  has_many :block_contents, :dependent => :destroy, :order => :position
+  has_many :contents, :through => :block_contents, :dependent => :destroy, :order => "block_contents.position"
   has_one :scroll, :as => :scrollable, :dependent => :destroy
   
   accepts_nested_attributes_for :contents, :block_contents

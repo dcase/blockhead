@@ -6,6 +6,7 @@
 			Content: 
 			<%= link_to image_tag("pencil.png", :size => "16x16"), edit_block_content_path(parent_block,content), :class => "modal update_content_#{content.id}", :title => "Edit" %>
 			<%= link_to image_tag("fail.png", :size => "16x16"), { :controller=>"blocks", :action=>"remove_content", :id => parent_block, :content_id => content }, :class => "ajax-delete", :title => "Delete" %>
+			<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Delete", :class => "content_drag_handle") %>
 		</div>
 	<% end %>
 

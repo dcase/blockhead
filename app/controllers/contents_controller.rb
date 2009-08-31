@@ -127,4 +127,13 @@ class ContentsController < ApplicationController
     render :text => params.inspect
   end
   
+  def order
+    @block = Block.find(params[:block_id])
+    params[:content].each_with_index do |id, position|
+     content = BlockContent.find(:first, :conditions => { :content_id => id, :block_id => @block })
+     BlockContent.update(content, {:position => position+1})
+    end
+    render :text => params.inspect
+  end
+  
 end

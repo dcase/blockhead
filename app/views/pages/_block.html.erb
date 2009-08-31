@@ -10,10 +10,10 @@
 			<%= link_to image_tag("fail.png", :size => "16x16", :alt => "Delete"), [@section,@page,block], :class => "ajax-delete", :title => "Delete" %>
 			<% unless block.parent.blank? %>
 				<% unless block.parent.nested_blocks_as_tabs? %>
-					<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Delete", :class => "block_drag_handle") %>
+					<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Change Order", :class => "block_drag_handle") %>
 				<% end %>
 			<% else %>
-				<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Delete", :class => "block_drag_handle") %>
+				<%= image_tag("drag_handle.png", :size => "16x16", :alt => "Change Order", :class => "block_drag_handle") %>
 			<% end %>	
 		</div>
 	<% end %>

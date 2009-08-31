@@ -398,6 +398,18 @@ $(document).ready( function() {
 			});
 		});
 		
+	// Sortable contents
+	$('div.block').livequery( function() {
+			$(this).sortable({
+				handle: '.content_drag_handle',
+				items: 'div.content',
+				axis: 'y',
+				update: function() {
+					$.post('/contents/order', $(this).sortable('serialize') +'&block_id='+ $(this).attr('id').split("_").pop());
+				} 
+			});
+		});
+		
 	// Automatic scroll buttons	
 	$.fn.checkScrolls = function() {
 		this.each( function() {
