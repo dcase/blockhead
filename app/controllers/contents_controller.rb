@@ -56,13 +56,14 @@ class ContentsController < ApplicationController
   # POST /contents.xml
   def create
     @block = Block.find(params[:block_id])
-    @content = @block.contents.build(params[:content])
+    @content = Content.new(params[:content])
     @content_controller = @content.contentable.class.to_s.tableize
     @page = @block.page
     @section = @page.section
 
     respond_to do |format|
       if @content.save
+        @block.contents << @content
         flash[:notice] = 'Content was successfully created.'
         format.html { redirect_to([@section,@page]) }
         format.js do 
