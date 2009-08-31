@@ -1,9 +1,9 @@
 <h1>Add Something</h1>
 <div class="modal-tabs">
 	<ul>
-		<li><span><%= link_to "Nested Block", new_section_page_block_path(@section,@page, :parent_id => @block) %></span></li>
-		<li><span><%= link_to "Existing Content", block_contents_path(@block) %></span></li>
 		<li><span><%= link_to "New Content", select_type_of_content_path(:block_id => @block)  %></span></li>
+		<li><span><%= link_to "Existing Content", block_contents_path(@block) %></span></li>
+		<li><span><%= link_to "Nested Block", new_section_page_block_path(@section,@page, :parent_id => @block) %></span></li>
 	</ul>
 </div>
 	
