@@ -473,21 +473,23 @@ $(document).ready( function() {
 	});
 	
 	// Font size switcher
-	function switchTextSize(size) {
-		$(".content").removeClass("small medium large current").addClass(size).addClass("current");
+	function switchTextSize(size, trigger) {
+		$("#font-size-switcher a").removeClass("current");
+		$(trigger).addClass("current");
+		$(".content").removeClass("small medium large").addClass(size);
 		$.post("/contents/remember_text_size", { text_size : size});
 		$('.block.autoscroll').checkScrolls();
 	}
 	$("#small").click( function(event) {
-		switchTextSize("small");
+		switchTextSize("small",this);
 		event.preventDefault();
 	});
 	$("#medium").click( function(event) {
-		switchTextSize("medium");
+		switchTextSize("medium",this);
 		event.preventDefault();
 	});
 	$("#large").click( function(event) {
-		switchTextSize("large");
+		switchTextSize("large",this);
 		event.preventDefault();
 	});
 	
