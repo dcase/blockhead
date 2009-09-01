@@ -62,7 +62,7 @@ class ImageFilesController < ApplicationController
         format.html { render :action => "new" }
         format.js do 
           responds_to_parent do
-            render :action => "new"
+            render :js => "$('#new_image_file').replaceWith('" + @template.escape_javascript(render_to_string(:action => "new")) + "');"
           end
         end
         format.xml  { render :xml => @image_file.errors, :status => :unprocessable_entity }
