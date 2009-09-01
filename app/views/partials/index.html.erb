@@ -1,0 +1,24 @@
+<h1>Listing partials</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Controller</th>
+    <th>Locals hash</th>
+  </tr>
+
+<% @partials.each do |partial| %>
+  <tr>
+    <td><%=h partial.name %></td>
+    <td><%=h partial.controller %></td>
+    <td><%=h partial.locals_hash %></td>
+    <td><%= link_to 'Show', partial %></td>
+    <td><%= link_to 'Edit', edit_partial_path(partial) %></td>
+    <td><%= link_to 'Destroy', partial, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New partial', new_partial_path %>

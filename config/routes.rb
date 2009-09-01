@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :partials
+
   map.resources :quotes
 
   map.resources :quote_lists, :has_many => :quotes

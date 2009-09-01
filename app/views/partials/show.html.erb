@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @partial.name %>
+</p>
+
+<p>
+  <b>Controller:</b>
+  <%=h @partial.controller %>
+</p>
+
+<p>
+  <b>Locals hash:</b>
+  <%=h @partial.locals_hash %>
+</p>
+
+
+<%= link_to 'Edit', edit_partial_path(@partial) %> |
+<%= link_to 'Back', partials_path %>

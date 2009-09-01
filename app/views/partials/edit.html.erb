@@ -1,0 +1,14 @@
+<h1>Editing partial</h1>
+
+<% form_for(@partial) do |f| %>
+  <%= f.error_messages %>
+
+<%= render :partial => f %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @partial %> |
+<%= link_to 'Back', partials_path %>
