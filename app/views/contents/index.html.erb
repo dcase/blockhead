@@ -1,6 +1,5 @@
 <h1>Content Library</h1>
 <% form_for @block, :html => { :class => "ajax" } do |f| %>
-<%= will_paginate @contents %>
 
 <%= render :partial => 'contents', :locals => { :f => f } %>
 
