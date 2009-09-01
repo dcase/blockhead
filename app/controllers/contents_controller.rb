@@ -4,7 +4,7 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.xml
   def index
-    @contents = Content.paginate( :per_page => 5, :page => params[:page] )
+    @contents = Content.paginate( :per_page => 5, :page => params[:page], :order => :name )
     
     unless params[:block_id].blank?
       @block = Block.find(params[:block_id])
