@@ -4,7 +4,7 @@
 <% block_div_options = ( block.height.blank? ? { :class => block.css_classes } : { :class => block.css_classes + " autoscroll", :style => "height: #{block.height}px;"} ) %>
 
 <% div_for block, block_div_options do %>
-	<% if authorized?(:admin) %>
+	<% if authorized? %>
 		<div class="admin-links" style="display: none;">
 			Block: 
 			<%= link_to image_tag("add.png", :size => "16x16", :alt => "Add"), add_something_section_page_block_path(@section,@page,block), :class => "modal update_block_#{update_block.id}", :title => "Add" %>
