@@ -314,3 +314,14 @@ div.pagination {
 	overflow: hidden;
 	height: inherit;
 }
+
+/*****************
+* Blog
+******************/
+div#blog_title {
+	position: relative;
+}
+div#blog_title img#blog_rss_link {
+	position: absolute;
+	right: -20px;
+}
