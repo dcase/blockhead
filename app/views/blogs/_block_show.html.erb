@@ -1,7 +1,7 @@
 <% content_for :auto_discovery_link do %>
 	<%= auto_discovery_link_tag :rss, blog_posts_url(1, :format => :rss) %>
 <% end %>
-<div id="blog_title" class="clearfix">
+<div id="blog_title">
 	<h4><%= link_to blog.title, blog %></h4>
 	<%= link_to image_tag("rss.png", :size => "18x20", :alt => "RSS icon", :id => "blog_rss_link"), blog_posts_url(blog, :format => :rss), :title => "RSS", :target => "_blank" %>
 </div>
