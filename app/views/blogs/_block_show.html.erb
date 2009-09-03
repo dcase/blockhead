@@ -9,7 +9,8 @@
 <ul class="blog_posts">
 	<% blog.recent_posts(4).each do |post| %>
 		<% content_tag_for :li, post do %>
-			<%= link_to truncate(post.title, 70), blog_post_path(post.blog,post) %>
+			<strong><% post.published_on.to_formatted_s(:long) %>: </strong>
+			<%= link_to post.title, blog_post_path(post.blog,post) %>
 		<% end %>
 	<% end %>
 </ul>
