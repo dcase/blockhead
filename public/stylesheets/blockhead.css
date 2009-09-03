@@ -318,10 +318,10 @@ div.pagination {
 /*****************
 * Blog
 ******************/
-div#blog_title {
-	position: relative;
+div#blog_title h4 {
+	float: left;
 }
 div#blog_title img#blog_rss_link {
-	position: absolute;
-	right: -20px;
+	float: left;
+	margin-left: 5px;
 }
