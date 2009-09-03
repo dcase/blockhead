@@ -16,7 +16,9 @@
 	<% end %>
 <% end %>
 
-<% div_for @post, :class => "content" do %>
+<%= render :partial => "blogs/archive_menu" %>
+
+<% div_for @post, :class => "content has-sidebar-right" do %>
 	<h4>
 		<%= @post.title %>
 		<% if authorized? %>
