@@ -19,6 +19,10 @@ class Blog < ActiveRecord::Base
     self.posts.find(:all, :limit => number, :conditions => { :published => true })
   end
   
+  def set_section
+    @section = self.content.blocks.first.page.section
+  end
+  
   private
   
   def at_least_one
