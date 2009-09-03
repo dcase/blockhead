@@ -15,7 +15,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.xml
   def show
     @blog = Blog.find(params[:id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     conditions = ""
     
     unless params[:year].blank?

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.xml
   def index
     @blog = Blog.find(params[:blog_id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     conditions = ""
     
     unless params[:year].blank?
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   # GET /posts/1.xml
   def show
     @blog = Blog.find(params[:blog_id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.find(params[:id])
     
     @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @blog = Blog.find(params[:blog_id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.build
 
     respond_to do |format|
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @blog = Blog.find(params[:blog_id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.find(params[:id])
   end
 
@@ -71,7 +71,7 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @blog = Blog.find(params[:blog_id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.build(params[:post])
 
     respond_to do |format|
@@ -92,7 +92,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @blog = Blog.find(params[:blog_id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.find(params[:id])
 
     respond_to do |format|
@@ -113,7 +113,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     @blog = Blog.find(params[:blog_id])
-    @blog.set_section
+    @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.find(params[:id])
     @post.destroy
 
