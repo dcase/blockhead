@@ -1,0 +1,14 @@
+<p>
+    <%= form.label :title %><br />
+    <%= form.text_field :title %>
+  </p>
+<% if form.object.posts.blank? %>
+	<% form.object.posts.build %>
+	<fieldset>
+		<legend>Add First Post</legend>
+		<% form.fields_for :posts do |pf| %>
+			<%= render :partial => "posts/form", :locals => { :form => pf} %>
+		<% end %>
+		</fieldset>
+<% end %>
+			

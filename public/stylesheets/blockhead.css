@@ -144,7 +144,7 @@ ul#page-admin-menu li img {
 	margin-right: 3px;
 }
 
-ul.list li, ul.quote_list li {
+ul.list li, ul.quote_list li, ul.blog_posts li {
 	position: relative;
 }
 
@@ -162,7 +162,10 @@ div.menu_item_admin_controls {
 	width: 20px;
 	left: -20px;
 }
-
+ul.blog_posts div.menu_item_admin_controls {
+	width: 40px;
+	left: -50px;
+}
 .admin-links {
 	position: absolute;
 	top: -24px;

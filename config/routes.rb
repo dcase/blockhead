@@ -1,4 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect "blogs/:id/archives/:year/:month/:day", 
+  :controller => "blogs", :action => "show", 
+  :requirements => { :year => /\d{4}/ }, 
+  :month => nil, :day => nil
+
+  map.resources :posts
+
+  map.resources :blogs, :has_many => :posts
+  
   map.resources :partials
 
   map.resources :quotes

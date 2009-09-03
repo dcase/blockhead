@@ -1,0 +1,14 @@
+<h1>Editing blog</h1>
+
+<% form_for(@blog, :html => { :class => "ajax" }) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => f %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @blog %> |
+<%= link_to 'Back', blogs_path %>

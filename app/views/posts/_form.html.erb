@@ -1,0 +1,18 @@
+<%= form.hidden_field :author, :value => current_user.login %>
+<p>
+	<%= form.label :title %><br />
+	<%= form.text_field :title %>
+</p>
+<p>
+	<%= form.label :published, "Publish this post?:" %>
+	<%= form.check_box :published %>
+</p>
+<p>
+	<%= form.label :published_on %>
+	<%= form.date_select :published_on %>
+</p>
+<p>
+	<%= link_to "Insert image", manage_image_files_path, :class => "modal-new-window", :style => "float: right;" %>
+   <%= form.label :body, "Text  (uses <a href=\"http://www.textism.com/tools/textile/\" target=\"_blank\">Textile</a>):" %><br />
+   <%= form.text_area :body %>
+ </p>

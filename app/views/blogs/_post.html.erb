@@ -1,0 +1,9 @@
+<% content_tag_for :li, post, :class => (post.published ? "published" : "unpublished") do %>
+	<% if authorized? %>
+		<div class="menu_item_admin_controls" style="display: none;">
+			<%= link_to(image_tag('add.png', :size => '16x16'), new_blog_post_path(@blog), :title => 'Add New Post', :class => "modal append_blog_posts_list") %>
+			<%= link_to(image_tag('fail.png', :size => '16x16'), blog_post_path(@blog,post), :class => "ajax-delete", :title => 'Delete Post')%>
+		</div>
+	<% end %>
+	<%= link_to post.title, blog_post_path(@blog,post) %>
+<% end %>

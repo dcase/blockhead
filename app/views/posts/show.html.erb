@@ -1,0 +1,31 @@
+<% content_for :auto_discovery_link do %>
+	<%= auto_discovery_link_tag :rss, blog_posts_url(1, :format => :rss) %>
+<% end %>
+
+<% content_for :alert do %>
+	<% if authorized? %>
+		<% unless @post.published? %>
+			<div style="background: blue;">
+				<% form_for([@blog,@post]) do |f| %>
+					<%= f.hidden_field :published, :value => 1 %>
+					This post is not published.
+					<%= f.submit "Publish" %>
+				<% end %>
+				</div>
+		<% end %>
+	<% end %>
+<% end %>
+
+<% div_for @post, :class => "content" do %>
+	<h4>
+		<%= @post.title %>
+		<% if authorized? %>
+			<%= link_to image_tag("pencil.png", :size => "16x16"), edit_blog_post_path(@blog,@post), :title => "Edit Post", :class => "modal update_post_#{@post.id}" %>
+		<% end %>
+	</h4>
+	<h5><%= @post.published_on.to_formatted_s(:long_ordinal) %></h5>
+	<%= textilize(@post.body) %>
+	<div>
+		<%= link_to "Back", @blog %>
+	</div>
+<% end %>

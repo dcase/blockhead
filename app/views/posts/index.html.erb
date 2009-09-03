@@ -1,0 +1,17 @@
+<% content_for :auto_discovery_link do %>
+	<%= auto_discovery_link_tag :rss, blog_posts_url(1, :format => :rss) %>
+<% end %>
+
+<%= render :partial => "blogs/archive_menu" %>
+
+<div class="content has-sidebar-right">
+	<h4>
+		<%= link_to @blog.title, @blog %>
+		<%= link_to image_tag("rss.png", :size => "18x20", :alt => "RSS icon"), blog_posts_url(@blog, :format => :rss), :title => "RSS", :target => "_blank" %>
+	</h4>
+	<ul id="blog_posts_list" class="blog_posts">
+		<% @posts.each do |post| %>
+			<%= render :partial => 'post', :locals => { :post => post } %>
+		<% end %>
+	</ul>
+</div>

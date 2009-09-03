@@ -1,0 +1,15 @@
+<% start_year = @first_post.published_on.year %>
+<div class="block sidebar-right">
+	<ul id="blog_archive_menu">
+		<% (start_year..Date.current.year).to_a.reverse.each do |year| %>
+			<li>
+				<%= link_to year.to_s, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => nil } %>
+				<ul class="months">
+					<% Date::MONTHNAMES.compact.each_with_index do |month,i| %>
+						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 } %></li>
+					<% end %>
+				</ul>
+			</li>
+		<% end %>
+	</ul>
+</div>
