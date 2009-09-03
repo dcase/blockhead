@@ -319,9 +319,8 @@ div.pagination {
 * Blog
 ******************/
 div#blog_title h4 {
-	float: left;
+	display: inline;
 }
 div#blog_title img#blog_rss_link {
-	float: left;
 	margin-left: 5px;
 }
