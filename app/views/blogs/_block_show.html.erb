@@ -9,7 +9,7 @@
 <ul class="blog_posts">
 	<% blog.recent_posts(4).each do |post| %>
 		<% content_tag_for :li, post do %>
-			<strong><%= post.published_on.to_formatted_s(:long) %>: </strong>
+			<strong><%= post.published_on.to_date..to_formatted_s(:long) %>: </strong>
 			<%= link_to post.title, blog_post_path(post.blog,post) %>
 		<% end %>
 	<% end %>

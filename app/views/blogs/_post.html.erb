@@ -5,6 +5,6 @@
 			<%= link_to(image_tag('fail.png', :size => '16x16'), blog_post_path(@blog,post), :class => "ajax-delete", :title => 'Delete Post')%>
 		</div>
 	<% end %>
-	<strong><%= post.published_on.to_formatted_s(:long) %>: </strong>
+	<strong><%= post.published_on.to_date..to_formatted_s(:long) %>: </strong>
 	<%= link_to post.title, blog_post_path(@blog,post) %>
 <% end %>
