@@ -1,5 +1,5 @@
 <% current_month = ( !params[:month].blank? ? params[:month].to_i : 1 ) %>
-<% current_date = ( !!defined?(@post) ? @post.published_on : ( !params[:year].blank? ? Date.new(params[:year].to_i, current_month) : Date.current) ) %>
+<% current_date = ( defined?(@post) == "instance-variable" ? @post.published_on : ( !params[:year].blank? ? Date.new(params[:year].to_i, current_month) : Date.current) ) %>
 <% start_year = @first_post.published_on.year %>
 <div class="block sidebar-right">
 	<ul id="blog_archive_menu">
