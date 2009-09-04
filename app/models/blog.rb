@@ -18,6 +18,12 @@ class Blog < ActiveRecord::Base
   def recent_posts(number = 3)
     self.posts.find(:all, :limit => number, :conditions => { :published => true })
   end
+  
+  def self.recent_posts(id, number = 3)
+    blog = Blog.find(id)
+    posts = blog.posts.find(:all, :limit => number, :conditions => { :published => true })
+    return posts
+  end
 
   private
   
