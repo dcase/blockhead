@@ -21,25 +21,27 @@
 	<% end %>
 <% end %>
 
-<%= render :partial => "blogs/archive_menu" %>
+<% div_for @post do %>
+	<%= render :partial => "blogs/archive_menu" %>
 
-<% div_for @post, :class => "content has-sidebar-right" do %>
-	<div id="blog_title">
-		<h4><%= link_to @blog.title, @blog %></h4>
-		<%= link_to image_tag("rss.png", :size => "18x20", :alt => "RSS icon", :id => "blog_rss_link"), blog_posts_url(@blog, :format => :rss), :title => "RSS", :target => "_blank" %>
-	</div>
-	<div class="post_title">
-		<%= @post.title %>
-		<% if authorized? %>
-			<%= link_to image_tag("pencil.png", :size => "16x16"), edit_blog_post_path(@blog,@post), :title => "Edit Post", :class => "modal update_post_#{@post.id}" %>
-		<% end %>
-	</div>
-	<div class="post_date"><%= @post.published_on.to_formatted_s(:long_ordinal) %></div>
-	<div class="post_body autoscroll">
-		<%= textilize(@post.body) %>
-		<%= render :partial => "common/scroll_buttons" %>
-	</div>
-	<div>
-		<%= link_to "Back", @blog %>
+	<div class="post content has-sidebar-right">
+		<div id="blog_title">
+			<h4><%= link_to @blog.title, @blog %></h4>
+			<%= link_to image_tag("rss.png", :size => "18x20", :alt => "RSS icon", :id => "blog_rss_link"), blog_posts_url(@blog, :format => :rss), :title => "RSS", :target => "_blank" %>
+		</div>
+		<div class="post_title">
+			<%= @post.title %>
+			<% if authorized? %>
+				<%= link_to image_tag("pencil.png", :size => "16x16"), edit_blog_post_path(@blog,@post), :title => "Edit Post", :class => "modal update_post_#{@post.id}" %>
+			<% end %>
+		</div>
+		<div class="post_date"><%= @post.published_on.to_formatted_s(:long_ordinal) %></div>
+		<div class="post_body autoscroll">
+			<%= textilize(@post.body) %>
+			<%= render :partial => "common/scroll_buttons" %>
+		</div>
+		<div>
+			<%= link_to "Back", @blog %>
+		</div>
 	</div>
 <% end %>
