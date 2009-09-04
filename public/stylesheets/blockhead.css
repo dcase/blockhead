@@ -309,6 +309,9 @@ div.pagination {
 /*****************
 * Automatic Scrolling Test
 ******************/
+.autoscroll {
+	position: relative;
+}
 
 .scroll-pane  {
 	overflow: hidden;
