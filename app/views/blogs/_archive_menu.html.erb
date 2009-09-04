@@ -1,4 +1,4 @@
-<% current_date = ( !!defined?(@post) ? @post.published_on : ( !params[:year].blank? ? Date.new(params[:year].to_i) : Date.current) ) %>
+<% current_date = ( !!defined?(@post) ? @post.published_on : ( !params[:year].blank? ? Date.new(params[:year].to_i, (params[:month].to_i || 1)) : Date.current) ) %>
 <% start_year = @first_post.published_on.year %>
 <div class="block sidebar-right">
 	<ul id="blog_archive_menu">
@@ -7,7 +7,7 @@
 				<%= link_to year.to_s, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => nil }, :class => ( current_date.year == year ? "current" : "notcurrent" ) %>
 				<ul class="months" style="display: <%= ( current_date.year == year ? "block" : "none" ) %>;">
 					<% Date::MONTHNAMES.compact.each_with_index do |month,i| %>
-						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 }, :class => ( (current_date.month == i+1 and !params[:month].blank?) ? "current" : "notcurrent" ) %></li>
+						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 }, :class => ( current_date.month == i+1 ? "current" : "notcurrent" ) %></li>
 					<% end %>
 				</ul>
 			</li>
