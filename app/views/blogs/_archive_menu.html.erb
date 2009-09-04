@@ -8,7 +8,7 @@
 				<%= link_to year.to_s, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => nil }, :class => ( current_date.year == year ? "current" : "notcurrent" ) %>
 				<ul class="months" style="display: <%= ( current_date.year == year ? "block" : "none" ) %>;">
 					<% Date::MONTHNAMES.compact.each_with_index do |month,i| %>
-						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 }, :class => ( (current_date.month == i+1 and !params[:month].blank?) ? "current" : "notcurrent" ) %></li>
+						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 }, :class => ( (current_date.month == i+1 and ( !params[:month].blank? || defined?(@post) == "instance-variable")) ? "current" : "notcurrent" ) %></li>
 					<% end %>
 				</ul>
 			</li>
