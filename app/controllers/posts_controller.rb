@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       conditions += (conditions.blank? ? "published = 1" : " AND published = 1")
     end
        
-    @posts = @blog.posts.find(:all, :conditions => [condiitions, params]) 
+    @posts = @blog.posts.find(:all, :conditions => [conditions, params]) 
     @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
    
     respond_to do |format|
