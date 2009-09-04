@@ -1,3 +1,13 @@
+<% if defined?(@page) == "instance-variable" %>
+	<% unless @page.seo_profile.blank? %>
+		<% content_for :title do %><%=h @page.seo_profile.title || "Blockhead" %><% end %>
+		<% content_for :seo_keywords do %><%=h @page.seo_profile.keywords || "Blockhead" %><% end %>
+		<% content_for :seo_description do %><%=h @page.seo_profile.description || "Blockhead" %><% end %>
+		<% content_for :seo_heading1 do %><%=h @page.seo_profile.h1 || "Blockhead" %><% end %>
+		<% content_for :seo_heading2 do %><%=h @page.seo_profile.h2 || "Blockhead" %><% end %>
+	<% end %>
+<% end %>
+
 <% content_for :auto_discovery_link do %>
 	<%= auto_discovery_link_tag :rss, blog_posts_url(1, :format => :rss) %>
 <% end %>

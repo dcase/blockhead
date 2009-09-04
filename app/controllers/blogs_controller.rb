@@ -15,7 +15,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1.xml
   def show
     @blog = Blog.find(params[:id])
-    @section = @blog.content.blocks.first.page.section
+    @page = @blog.content.blocks.first.page
+    @section = @page.section
     conditions = ""
     
     unless params[:year].blank?
@@ -89,6 +90,8 @@ class BlogsController < ApplicationController
   # PUT /blogs/1.xml
   def update
     @blog = Blog.find(params[:id])
+    @page = @blog.content.blocks.first.page
+    @section = @page.section
     @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
 
     respond_to do |format|
