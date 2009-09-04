@@ -4,10 +4,10 @@
 	<ul id="blog_archive_menu">
 		<% (start_year..Date.current.year).to_a.reverse.each do |year| %>
 			<li>
-				<%= link_to year.to_s, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => nil }, :class => ( (current_date.year == year and defined?(@post)) ? "current" : "notcurrent" ) %>
+				<%= link_to year.to_s, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => nil }, :class => ( current_date.year == year ? "current" : "notcurrent" ) %>
 				<ul class="months" style="display: <%= ( current_date.year == year ? "block" : "none" ) %>;">
 					<% Date::MONTHNAMES.compact.each_with_index do |month,i| %>
-						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 }, :class => ( (current_date.month == i+1 and defined?(@post)) ? "current" : "notcurrent" ) %></li>
+						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 }, :class => ( current_date.month == i+1 ? "current" : "notcurrent" ) %></li>
 					<% end %>
 				</ul>
 			</li>
