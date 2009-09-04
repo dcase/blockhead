@@ -89,6 +89,7 @@ class BlogsController < ApplicationController
   # PUT /blogs/1.xml
   def update
     @blog = Blog.find(params[:id])
+    @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])

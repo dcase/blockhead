@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     end
        
     @posts = @blog.posts.find(:all, :conditions => [condiitions, params]) 
+    @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
    
     respond_to do |format|
       format.html # index.html.erb
@@ -73,6 +74,7 @@ class PostsController < ApplicationController
     @blog = Blog.find(params[:blog_id])
     @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.build(params[:post])
+    @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
 
     respond_to do |format|
       if @post.save
@@ -94,6 +96,7 @@ class PostsController < ApplicationController
     @blog = Blog.find(params[:blog_id])
     @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.find(params[:id])
+    @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -116,6 +119,7 @@ class PostsController < ApplicationController
     @section = @blog.content.blocks.first.page.section
     @post = @blog.posts.find(params[:id])
     @post.destroy
+    @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )
 
     respond_to do |format|
       format.html { redirect_to(posts_url) }
