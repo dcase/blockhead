@@ -1,12 +1,13 @@
+<% current_date = ( defined?(@post) ? @post.published_on : Date.current ) %>
 <% start_year = @first_post.published_on.year %>
 <div class="block sidebar-right">
 	<ul id="blog_archive_menu">
 		<% (start_year..Date.current.year).to_a.reverse.each do |year| %>
 			<li>
-				<%= link_to year.to_s, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => nil } %>
-				<ul class="months">
+				<%= link_to year.to_s, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => nil }, :class => ( current_date.year == year ? "current" : "notcurrent" ) %>
+				<ul class="months" style="display: <%= ( current_date.year == year ? "block" : "none" ) %>;">
 					<% Date::MONTHNAMES.compact.each_with_index do |month,i| %>
-						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 } %></li>
+						<li><%= link_to month, { :controller => "blogs", :action => "show", :id => @blog, :year => year, :month => i+1 }, :class => ( current_date.month == i+1 ? "current" : "notcurrent" ) %></li>
 					<% end %>
 				</ul>
 			</li>

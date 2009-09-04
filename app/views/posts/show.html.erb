@@ -35,7 +35,9 @@
 		<% end %>
 	</div>
 	<div class="post_date"><%= @post.published_on.to_formatted_s(:long_ordinal) %></div>
-	<%= textilize(@post.body) %>
+	<div class="post_body autoscroll">
+		<%= textilize(@post.body) %>
+	</div>
 	<div>
 		<%= link_to "Back", @blog %>
 	</div>
