@@ -48,6 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.sitemap "/sitemap", :controller => "sections", :action => "sitemap"
+  map.sitemap_rss "/sitemap.:format", :controller => "sections", :action => "sitemap"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

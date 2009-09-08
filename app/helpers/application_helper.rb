@@ -59,5 +59,25 @@ module ApplicationHelper
     
     return output
   end
+  
+  def build_sitemap(section,xml)
+    unless section.pages.blank?
+      section.pages.each do |page|
+        if page.published?
+          xml.url do
+            xml.loc section_page_url(section,page)
+            xml.lastmod page.updated_at.to_formatted_s(:db)
+          end
+        end
+      end
+    end
+    unless section.children.blank?
+      section.children.each do |subsection|
+        if section.published?
+          build_sitemap(subsection,xml)
+        end
+      end
+    end
+  end
         
 end

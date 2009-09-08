@@ -125,6 +125,11 @@ class SectionsController < ApplicationController
   
   def sitemap
     @section = Section.new
+    
+    respond_to do |format|
+      format.html
+      format.xml
+    end
   end
 
 end
