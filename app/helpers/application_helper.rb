@@ -66,7 +66,7 @@ module ApplicationHelper
         if page.published?
           xml.url do
             xml.loc section_page_url(section,page)
-            xml.lastmod page.updated_at
+            xml.lastmod page.updated_at.to_s
           end
         end
       end
