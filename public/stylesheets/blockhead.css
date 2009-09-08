@@ -187,8 +187,8 @@ ul.blog_posts div.menu_item_admin_controls {
 	border: 2px solid #333;
 }
 .content .admin-links {
-	background: #666;
-	border: 2px solid #666;
+	background: #999;
+	border: 2px solid #999;
 }
 .active-admin {
 	border: 2px solid #999;
@@ -197,7 +197,7 @@ ul.blog_posts div.menu_item_admin_controls {
 	border: 2px solid #333;
 }
 .block .active-admin {
-	border: 2px solid #666;
+	border: 2px solid #999;
 }
 .unpublished {
 	font-style: italic;
