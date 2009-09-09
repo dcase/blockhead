@@ -41,8 +41,9 @@ class Feed < ActiveRecord::Base
   
   def self.update_all_feeds
     Feed.all.each do |f|
-      feed = Feedzirra::Feed.fetch_and_parse(f.link)
-      f.add_entries(feed.entries, f.id)
+      feed = Feedzirra::Feed.fetch_and_parse(f.link,
+      :on_success => lambda{|feed, f| f.add_entries(feed.entries, f.id)},
+      :on_failure => lambda{|url, response_code, response_header, response_body| puts response_body })
     end
   end
 
