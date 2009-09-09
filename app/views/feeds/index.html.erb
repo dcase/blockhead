@@ -10,7 +10,7 @@
 <% @feeds.each do |feed| %>
   <tr>
     <td><%=h feed.title %></td>
-    <td><%=h feed.link %></td>
+    <td><%=h feed.feed_url %></td>
     <td><%=h feed.description %></td>
     <td><%= link_to 'Show', feed %></td>
     <td><%= link_to 'Edit', edit_feed_path(feed) %></td>

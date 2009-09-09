@@ -2,8 +2,8 @@ class Feed < ActiveRecord::Base
   has_one :content, :as => :contentable, :dependent => :destroy
   has_many :feed_entries, :dependent => :destroy, :order => "published_at DESC"
   
-  validates_presence_of :link
-  validates_uniqueness_of :link
+  validates_presence_of :feed_url
+  validates_uniqueness_of :feed_url
   validate :real_feed?
   
   accepts_nested_attributes_for :content
@@ -15,7 +15,7 @@ class Feed < ActiveRecord::Base
   end
   
   def before_save
-    feed = Feedzirra::Feed.fetch_and_parse(self.link)
+    feed = Feedzirra::Feed.fetch_and_parse(self.feed_url)
     self.title = feed.title
     self.description = feed.summary if defined?(feed.summary)
   end
@@ -25,12 +25,12 @@ class Feed < ActiveRecord::Base
   end
   
   def update_from_feed
-    feed = Feedzirra::Feed.fetch_and_parse(link)
+    feed = Feedzirra::Feed.fetch_and_parse(feed_url)
     add_entries(feed.entries, id)
   end
 
   def update_from_feed_continuously(delay_minutes = 15)
-    feed = Feedzirra::Feed.fetch_and_parse(link)
+    feed = Feedzirra::Feed.fetch_and_parse(feed_url)
     add_entries(feed.entries, id)
     loop do
       sleep delay_minutes * 60
@@ -41,9 +41,10 @@ class Feed < ActiveRecord::Base
   
   def self.update_all_feeds
     Feed.all.each do |f|
-      feed = Feedzirra::Feed.fetch_and_parse(f.link,
-      :on_success => lambda{|feed, f| f.add_entries(feed.entries, f.id)},
-      :on_failure => lambda{|url, response_code, response_header, response_body| puts response_body })
+      feed = Feedzirra::Feed.fetch_and_parse(f.feed_url)
+      unless feed.entries.blank?
+        f.add_entries(feed.entries, f.id)
+      end
     end
   end
 
@@ -65,7 +66,7 @@ class Feed < ActiveRecord::Base
   private
   
   def real_feed?
-    feed = Feedzirra::Feed.fetch_and_parse(self.link);
+    feed = Feedzirra::Feed.fetch_and_parse(self.feed_url);
     unless defined?(feed.title)
       errors.add_to_base("This feed has no title! Please check that the URL is a real feed.")
     end
