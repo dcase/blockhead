@@ -37,6 +37,10 @@ div.content, div.block {
 div.block {
 	padding-top: 23px;
 	margin-bottom: 15px;
+	z-index: 3;
+}
+div.content {
+	z-index: 4;
 }
 
 div.scroll-buttons {
