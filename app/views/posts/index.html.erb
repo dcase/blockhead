@@ -12,7 +12,7 @@
 	body_class = ""
 	body_class << " admin-mode" if authorized?
 	body_class << (" " + dom_id(@section))
-	puts body_class.strip!
+	return body_class.strip!
 end %>
 
 <% content_for :auto_discovery_link do %>
