@@ -30,14 +30,17 @@ img {
   font-size: 0;
 }
 
-div.content, div.block {
+div.content {
 	position: relative;
-	z-index: 3;
+	z-index: 4;
 	border: 2px solid transparent;
 }
 div.block {
 	padding-top: 23px;
 	margin-bottom: 15px;
+	position: relative;
+	z-index: 3;
+	border: 2px solid transparent;
 }
 
 div.scroll-buttons {
