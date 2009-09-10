@@ -12,10 +12,12 @@
 	<%= auto_discovery_link_tag :rss, blog_posts_url(1, :format => :rss) %>
 <% end %>
 
-<% content_for :body_class do %>
-	<%= "admin-mode" if authorized? %>
-	<%= dom_id(@section) %>
-<% end %>
+<% content_for :body_class do 
+	body_class = ""
+	body_class << " admin-mode" if authorized?
+	body_class << (" " + dom_id(@section))
+	puts body_class.strip!
+end %>
 
 <%= render :partial => "blogs/archive_menu" %>
 

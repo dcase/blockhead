@@ -6,12 +6,14 @@
 	<% content_for :seo_heading2 do %><%=h @page.seo_profile.h2 || "Blockhead" %><% end %>
 <% end %>
 
-<% content_for :body_class do %>
-	<%= "admin-mode" if authorized? %>
-	<%= "root_" + dom_id(@section_root) unless @section_root == @section %>
-	<%= dom_id(@section) %>
-	<%= dom_id(@page) %>
-<% end %>
+<% content_for :body_class do
+	body_class = ""
+	body_class << "admin-mode" if authorized?
+	body_class << " root_" + dom_id(@section_root) unless @section_root == @section
+	body_class << " " + dom_id(@section)
+	body_class << " " + dom_id(@page)
+	puts body_class.strip!
+end %>
 
 <% content_for :alert do %>
 	<% if authorized? %>
