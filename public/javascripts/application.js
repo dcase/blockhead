@@ -439,8 +439,8 @@ $(document).ready( function() {
 				$('> *',this).not(".admin-links, .scroll-buttons").wrapAll("<div class=\"scroll-pane\"></div>").wrapAll("<div class=\"scroll-content\"></div>");
 			}
 		
-			pane = $('> .scroll-pane', this);
-			content = $('> .scroll-pane .scroll-content', this);
+			var pane = $('> .scroll-pane', this);
+			var content = $('> .scroll-pane .scroll-content', this);
 		
 			if (pane.height() < content.height()) {
 				$('> .scroll-buttons .scroll-down', this).mousedown( function() {
