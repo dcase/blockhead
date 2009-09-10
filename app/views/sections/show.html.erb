@@ -1,9 +1,9 @@
 <% content_for :body_class do 
 	body_class = ""
 	body_class << " admin-mode" if authorized?
-	body_class << (" " + dom_id(@section))
-	puts body_class.strip
-end %>
+	body_class << (" " + dom_id(@section)) %>
+	<%= body_class.strip %>
+<% end %>
 
 Coming soon!
 
