@@ -192,10 +192,12 @@ ul.blog_posts div.menu_item_admin_controls {
 .block .admin-links {
 	background: #333;
 	border: 2px solid #333;
+	z-index: 3;
 }
 .content .admin-links {
 	background: #999;
 	border: 2px solid #999;
+	z-index: 4;
 }
 .active-admin {
 	border: 2px solid #999;
