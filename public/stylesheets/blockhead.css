@@ -258,6 +258,9 @@ div.pagination {
 /*****************
 * Text formats
 ******************/
+.top {
+	margin-top: 0;
+}
 .clear-left {
 	clear: left;
 }
