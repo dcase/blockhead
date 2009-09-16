@@ -8,3 +8,9 @@ div#content {
   height: 1%;
   overflow: visible;
 }
+div.content, div.block {
+	border: 2px solid white;
+}
+.scroll-content div {
+	position: static;
+}

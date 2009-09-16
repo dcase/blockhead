@@ -5,3 +5,6 @@
 .clearfix{
   min-height: 1%;
 }
+.scroll-content > div {
+	position: static;
+}

@@ -329,9 +329,6 @@ div.pagination {
 	overflow: hidden;
 	height: inherit;
 }
-.scroll-content > div {
-	position: static;
-}
 
 
 /*****************
