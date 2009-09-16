@@ -1,4 +1,4 @@
-img, input {behavior: url(/javascripts/iepngfix.htc);}
+img {behavior: url(/javascripts/iepngfix.htc);}
 div#content {
 	min-height: 350px;
 	height: auto !important;
