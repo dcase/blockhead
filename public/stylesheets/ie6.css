@@ -1,4 +1,4 @@
-img {behavior: url(/javascripts/iepngfix.htc);}
+img, #google_search_submit {behavior: url(/javascripts/iepngfix.htc);}
 div#content {
 	min-height: 350px;
 	height: auto !important;

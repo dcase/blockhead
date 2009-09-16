@@ -1,7 +1,9 @@
-<div id="search">
-	<% form_tag "http://google.com", :method => :get do %>
+<div id="search_form">
+	<% form_tag "http://google.com", :method => :get, :id => "google_search_form"  do %>
 		<%= link_to "Sitemap", sitemap_path %> | Search
 		<%= text_field_tag 'search' %>
-		<%= image_submit_tag 'search_submit.png' %>
+		<%= image_submit_tag 'search_submit.png', :id => "google_search_submit" %>
 	<% end %>
+	<div id="google_branding">Loading...</div>
+	<div id="search_results_container" style="display: none;"></div>
 </div>
