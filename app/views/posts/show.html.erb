@@ -1,10 +1,10 @@
 <% if defined?(@page) == "instance-variable" %>
-	<% unless @page.seo_profile.blank? %>
-		<% content_for :title do %><%=h @page.seo_profile.title || "Blockhead" %><% end %>
-		<% content_for :seo_keywords do %><%=h @page.seo_profile.keywords || "Blockhead" %><% end %>
-		<% content_for :seo_description do %><%=h @page.seo_profile.description || "Blockhead" %><% end %>
-		<% content_for :seo_heading1 do %><%=h @page.seo_profile.h1 || "Blockhead" %><% end %>
-		<% content_for :seo_heading2 do %><%=h @page.seo_profile.h2 || "Blockhead" %><% end %>
+	<% unless @seo_profile.blank? %>
+		<% content_for :title do %><%=h @seo_profile.title || "Blockhead" %><% end %>
+		<% content_for :seo_keywords do %><%=h @seo_profile.keywords || "Blockhead" %><% end %>
+		<% content_for :seo_description do %><%=h @seo_profile.description || "Blockhead" %><% end %>
+		<% content_for :seo_heading1 do %><%=h @seo_profile.h1 || "Blockhead" %><% end %>
+		<% content_for :seo_heading2 do %><%=h @seo_profile.h2 || "Blockhead" %><% end %>
 	<% end %>
 <% end %>
 

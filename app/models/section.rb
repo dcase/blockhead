@@ -1,5 +1,6 @@
 class Section < ActiveRecord::Base
   has_many :pages, :dependent => :destroy, :order => :position
+  belongs_to :seo_profile
   
   acts_as_list :scope => :parent_id
   acts_as_tree :order => :position

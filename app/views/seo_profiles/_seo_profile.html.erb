@@ -1,4 +1,16 @@
-<% content_tag_for(:li, seo_profile) do %>
-	<%= link_to image_tag('fail.png', :size => "16x16", :alt => "Delete SEO Profile"), seo_profile, :title => "Delete", :class => "ajax-delete" %>
-	<%= link_to seo_profile.name, edit_seo_profile_path(seo_profile), :class => "modal-new-window update_seo_profile_#{seo_profile.id}" %>
+<% content_tag_for(:tr, seo_profile) do %>
+	<td><%= link_to image_tag('fail.png', :size => "16x16", :alt => "Delete SEO Profile"), seo_profile, :title => "Delete", :class => "ajax-delete" %></td>
+	<td><%= link_to seo_profile.name, edit_seo_profile_path(seo_profile, :section_id => @section, :page_id => @page), :class => "modal-new-window update_seo_profile_#{seo_profile.id}" %></td>
+	<td>
+	<% form_for(@section) do |f| %>
+		<%= f.hidden_field :seo_profile_id, :value => seo_profile.id %>
+		<%= f.submit "Assign to Section" %>
+	<% end %>
+	</td>
+	<td>
+	<% form_for([@section,@page]) do |f| %>
+		<%= f.hidden_field :seo_profile_id, :value => seo_profile.id %>
+		<%= f.submit "Assign to Page" %>
+	<% end %>
+	</td>
 <% end %>

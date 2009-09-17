@@ -17,6 +17,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @page = @blog.content.blocks.first.page
     @section = @page.section
+    @seo_profile = @page.seo_profile || @section.seo_profile
     conditions = ""
     
     unless params[:year].blank?

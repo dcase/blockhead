@@ -1,8 +1,9 @@
 <h1>Listing SEO Profiles</h1>
-<ul id="seo-profile-list">
+<table id="seo-profile-list">
 <% for seo_profile in @seo_profiles %>
 	<%= render :partial => 'seo_profile', :locals => { :seo_profile => seo_profile } %>
 <% end %>
-</ul>
+</table>
 
-<%= link_to 'New SEO Profile', new_seo_profile_path, :class => "modal-new-window append_seo-profile-list" %>
+<%= image_tag("add.png", :size => "16x16", :alt => "New SEO Profile") %>
+<%= link_to 'New SEO Profile', new_seo_profile_path(:section_id => @section, :page_id => @page), :class => "modal-new-window append_seo-profile-list" %>

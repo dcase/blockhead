@@ -17,3 +17,4 @@
     <%= form.label :display_title, "Display the title?:" %><br />
     <%= form.check_box :display_title %>
   </p>
+	<%= render :partial => "seo_profiles/form_include", :locals => { :f => form } %>

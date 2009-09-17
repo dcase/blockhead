@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @blog = Blog.find(params[:blog_id])
     @page = @blog.content.blocks.first.page
     @section = @page.section
+    @seo_profile = @page.seo_profile || @section.seo_profile
     conditions = ""
     
     unless params[:year].blank?
@@ -43,6 +44,7 @@ class PostsController < ApplicationController
     @blog = Blog.find(params[:blog_id])
     @page = @blog.content.blocks.first.page
     @section = @page.section
+    @seo_profile = @page.seo_profile || @section.seo_profile
     @post = @blog.posts.find(params[:id])
     
     @first_post = @blog.posts.find(:first, :conditions => { :published => true }, :order => "published_on ASC" )

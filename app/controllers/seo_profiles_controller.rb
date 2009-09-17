@@ -4,6 +4,8 @@ class SeoProfilesController < ApplicationController
   # GET /seo_profiles.xml
   def index
     @seo_profiles = SeoProfile.all
+    @section = Section.find(params[:section_id])
+    @page = Page.find(params[:page_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +30,8 @@ class SeoProfilesController < ApplicationController
   # GET /seo_profiles/new.xml
   def new
     @seo_profile = SeoProfile.new
+    @section = Section.find(params[:section_id])
+    @page = Page.find(params[:page_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,12 +43,16 @@ class SeoProfilesController < ApplicationController
   # GET /seo_profiles/1/edit
   def edit
     @seo_profile = SeoProfile.find(params[:id])
+    @section = Section.find(params[:section_id])
+    @page = Page.find(params[:page_id])
   end
 
   # POST /seo_profiles
   # POST /seo_profiles.xml
   def create
     @seo_profile = SeoProfile.new(params[:seo_profile])
+    @section = Section.find(params[:section_id])
+    @page = Page.find(params[:page_id])
 
     respond_to do |format|
       if @seo_profile.save
@@ -64,6 +72,8 @@ class SeoProfilesController < ApplicationController
   # PUT /seo_profiles/1.xml
   def update
     @seo_profile = SeoProfile.find(params[:id])
+    @section = Section.find(params[:section_id])
+    @page = Page.find(params[:page_id])
 
     respond_to do |format|
       if @seo_profile.update_attributes(params[:seo_profile])

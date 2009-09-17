@@ -340,3 +340,10 @@ div#blog_title h4 {
 div#blog_title img#blog_rss_link {
 	margin-left: 5px;
 }
+
+/*****************
+* SEO Profile Manager
+******************/
+.seo_profile form {
+	display: inline;
+}

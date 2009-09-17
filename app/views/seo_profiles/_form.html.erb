@@ -1,5 +1,7 @@
 <% form_for(@seo_profile, :html => { :class => "ajax modal2" }) do |f| %>
   <%= f.error_messages %>
+	<%= hidden_field_tag :section_id, @section.id %>
+	<%= hidden_field_tag :page_id, @page.id %>
 
   <p>
     <%= f.label :name %><br />
