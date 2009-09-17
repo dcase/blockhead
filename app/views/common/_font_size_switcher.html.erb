@@ -1,7 +1,7 @@
 <% if session[:text_size].blank? then session[:text_size] = "medium" end %>
 <div id="font-size-switcher">
 	Text Size 
-	<%= link_to "A", {}, :id => "small", :class => "small" + ( session[:text_size] == "small" ? " current" : "") %>
-	<%= link_to "A", {}, :id => "medium", :class => "medium" + ( session[:text_size] == "medium" ? " current" : "") %>
-	<%= link_to "A", {}, :id => "large", :class => "large" + ( session[:text_size] == "large" ? " current" : "") %>
+	<%= link_to "A", {}, :href => "javscript: void(0);", :id => "small", :class => "small" + ( session[:text_size] == "small" ? " current" : "") %>
+	<%= link_to "A", {}, :href => "javscript: void(0);", :id => "medium", :class => "medium" + ( session[:text_size] == "medium" ? " current" : "") %>
+	<%= link_to "A", {}, :href => "javscript: void(0);", :id => "large", :class => "large" + ( session[:text_size] == "large" ? " current" : "") %>
 </div>
