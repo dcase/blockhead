@@ -39,6 +39,9 @@ div.block {
 	margin-bottom: 15px;
 	z-index: 3;
 }
+div.block div.block {
+	margin-top: 15px;
+}
 div.content {
 	z-index: 4;
 }
