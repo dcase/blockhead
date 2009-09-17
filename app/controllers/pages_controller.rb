@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     
     @section_root = @section.set_root
     
-    @seo_profile = @page.seo_profile || @section.seo_profile
+    @seo_profile = @page.seo_profile || @section.seo_profile || @section_root.seo_profile
 
     respond_to do |format|
       format.html # show.html.erb

@@ -27,7 +27,11 @@ class SectionsController < ApplicationController
 
     @section,@page = @section.find_first_page
     
-    @seo_profile = @page.seo_profile || @section.seo_profile
+    if @page
+      @seo_profile = @page.seo_profile || @section.seo_profile || @section_root.seo_profile
+    else
+      @seo_profile = @section.seo_profile || @section_root.seo_profile
+    end
 
     respond_to do |format|
       format.html do 
