@@ -26,6 +26,8 @@ class SectionsController < ApplicationController
     @section_root = @section.set_root
 
     @section,@page = @section.find_first_page
+    
+    @seo_profile = @page.seo_profile || @section.seo_profile
 
     respond_to do |format|
       format.html do 
