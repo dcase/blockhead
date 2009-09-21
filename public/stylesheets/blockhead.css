@@ -42,6 +42,9 @@ div.block {
 .admin-mode div.block div.block {
 	margin-top: 23px;
 }
+.admin-mode .scroll-content .content {
+	margin-top: 23px;
+}
 div.content {
 	z-index: 4;
 }
