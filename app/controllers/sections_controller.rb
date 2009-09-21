@@ -131,13 +131,7 @@ class SectionsController < ApplicationController
   
   def sitemap
     @section = Section.new
-    @seo_profile = SeoProfile.find_or_create_by_name("Sitemap", 
-      :title => "Sitemap",
-      :description => "Sitemap",
-      :keywords => "Sitemap",
-      :h1 => "Sitemap",
-      :h2 => "Sitemap"
-      )
+    @seo_profile = SeoProfile.find_or_create_by_name(:name => "Sitemap", :title => "Sitemap",:description => "Sitemap",:keywords => "Sitemap",:h1 => "Sitemap",:h2 => "Sitemap")
     
     respond_to do |format|
       format.html
